@@ -50,18 +50,11 @@ body {
 #navbar {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  right: 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 1.5rem 2.5rem;
   z-index: 100;
-}
-
-#nav-logo {
-  height: 2rem;
-  width: auto;
 }
 
 #nav-links {
