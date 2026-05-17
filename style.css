@@ -189,6 +189,10 @@ body {
     max-width: 88%;
   }
 
+  #hero .bg-img {
+    background-image: url('mogenmobilehero.png') !important;
+  }
+
   #cursor-video {
     display: none;
   }
