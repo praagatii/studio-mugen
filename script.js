@@ -59,12 +59,18 @@ document.querySelectorAll('.project-section').forEach(section => {
   });
 });
 
-// Mobile: autoplay PiP video
+// Mobile: start PiP videos on first interaction (bypasses autoplay restrictions)
 if (window.innerWidth <= 768) {
-  document.querySelectorAll('.project-section').forEach(section => {
-    const video = section.querySelector('.project-video');
-    if (!video) return;
-    section.classList.add('active');
-    video.play().catch(() => {});
-  });
+  const mobileVideos = document.querySelectorAll('.project-section .project-video');
+  if (mobileVideos.length) {
+    const startVideos = () => {
+      mobileVideos.forEach(v => {
+        v.play().catch(() => {});
+      });
+      document.removeEventListener('touchstart', startVideos);
+      document.removeEventListener('click', startVideos);
+    };
+    document.addEventListener('touchstart', startVideos);
+    document.addEventListener('click', startVideos);
+  }
 }
