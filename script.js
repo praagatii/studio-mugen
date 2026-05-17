@@ -31,14 +31,15 @@ document.querySelectorAll('.project-section').forEach(section => {
   section.addEventListener('mouseenter', () => {
     if (!videoSrc) return;
     currentSection = section;
-    gsap.killTweensOf(cursorVideo);
-    gsap.set(cursorVideo, { opacity: 0 });
     cursorVideo.src = videoSrc;
     cursorVideo.currentTime = 0;
     cursorVideo.load();
-    cursorVideo.play().then(() => {
-      gsap.to(cursorVideo, { opacity: 1, duration: 2, ease: 'power2.out' });
-    }).catch(() => {});
+    cursorVideo.play().catch(() => {});
+    cursorVideo.style.opacity = '0';
+    requestAnimationFrame(() => {
+      cursorVideo.style.transition = 'opacity 2s ease';
+      cursorVideo.style.opacity = '1';
+    });
   });
 
   section.addEventListener('mousemove', (e) => {
@@ -49,12 +50,8 @@ document.querySelectorAll('.project-section').forEach(section => {
 
   section.addEventListener('mouseleave', () => {
     currentSection = null;
-    gsap.killTweensOf(cursorVideo);
-    gsap.to(cursorVideo, {
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.in',
-      onComplete: () => { cursorVideo.pause(); cursorVideo.src = ''; }
-    });
+    cursorVideo.style.transition = 'opacity 0.3s ease';
+    cursorVideo.style.opacity = '0';
+    setTimeout(() => { cursorVideo.pause(); cursorVideo.src = ''; }, 300);
   });
 });
