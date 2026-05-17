@@ -22,6 +22,7 @@ cursorVideo.preload = 'auto';
 document.body.appendChild(cursorVideo);
 
 let currentSection = null;
+let leaveTimeout;
 
 document.querySelectorAll('.project-section').forEach(section => {
   const vidEl = section.querySelector('.project-video');
@@ -30,11 +31,13 @@ document.querySelectorAll('.project-section').forEach(section => {
 
   section.addEventListener('mouseenter', () => {
     if (!videoSrc) return;
+    clearTimeout(leaveTimeout);
     currentSection = section;
     cursorVideo.src = videoSrc;
     cursorVideo.currentTime = 0;
     cursorVideo.load();
     cursorVideo.play().catch(() => {});
+    cursorVideo.style.transition = 'none';
     cursorVideo.style.opacity = '0';
     requestAnimationFrame(() => {
       cursorVideo.style.transition = 'opacity 2s ease';
@@ -52,6 +55,6 @@ document.querySelectorAll('.project-section').forEach(section => {
     currentSection = null;
     cursorVideo.style.transition = 'opacity 0.3s ease';
     cursorVideo.style.opacity = '0';
-    setTimeout(() => { cursorVideo.pause(); cursorVideo.src = ''; }, 300);
+    leaveTimeout = setTimeout(() => { cursorVideo.pause(); cursorVideo.src = ''; }, 300);
   });
 });
