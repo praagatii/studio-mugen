@@ -203,8 +203,8 @@ body {
     inset: auto;
     bottom: 2rem;
     left: 2rem;
-    width: min(280px, 70vw);
-    height: min(158px, 40vw);
+    width: min(180px, 45vw);
+    height: min(101px, 25vw);
     border-radius: 6px;
     z-index: 2;
     opacity: 1;
