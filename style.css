@@ -79,7 +79,7 @@ body {
 .section {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   overflow: hidden;
 }
 
@@ -159,4 +159,53 @@ body {
   color: rgba(255, 255, 255, 0.4);
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    padding: 1rem 1.25rem;
+  }
+
+  #nav-links {
+    gap: 1rem;
+  }
+
+  #navbar a {
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
+  }
+
+  .heading {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+  }
+
+  .subheading {
+    font-size: 0.95rem;
+    max-width: 90%;
+    margin-top: 0.5rem;
+  }
+
+  .body-text {
+    font-size: 0.95rem;
+    max-width: 90%;
+  }
+
+  .overlay-content {
+    top: 20%;
+    left: 6%;
+    max-width: 88%;
+  }
+
+  #cursor-video {
+    display: none;
+  }
+
+  .project-section .project-video {
+    display: none;
+  }
+
+  .footer-note {
+    left: 6%;
+    font-size: 0.6rem;
+  }
 }
