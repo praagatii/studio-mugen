@@ -152,9 +152,18 @@ body {
 }
 
 @media (max-width: 768px) {
-  .section {
-    background: #000;
+  body {
+    cursor: auto;
   }
+
+  .hero {
+    background: url('MUGENMOBILE.png') center/contain no-repeat, #000;
+  }
+
+  #cursor-video {
+    display: none;
+  }
+}
 
   #navbar {
     padding: 1rem 1.25rem;

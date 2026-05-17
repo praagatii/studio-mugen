@@ -59,15 +59,34 @@ document.querySelectorAll('.project-section').forEach(section => {
   });
 });
 
-// Mobile: play PiP videos immediately
-if (window.innerWidth <= 768) {
-  document.querySelectorAll('.project-section .project-video').forEach(v => {
-    v.play().catch(() => {});
+// Mobile
+if (window.matchMedia('(max-width: 768px)').matches) {
+  document.querySelectorAll('.project-section .project-video').forEach(video => {
+    video.setAttribute('playsinline', '');
+    video.preload = 'auto';
   });
-  // Retry on first touch if blocked
-  document.addEventListener('touchstart', () => {
-    document.querySelectorAll('.project-section .project-video').forEach(v => {
-      if (v.paused) v.play().catch(() => {});
+
+  // Show the current section's video as PiP immediately
+  const showPip = () => {
+    const sections = document.querySelectorAll('.project-section');
+    let found = false;
+    sections.forEach(s => {
+      const video = s.querySelector('.project-video');
+      if (!video) return;
+      const rect = s.getBoundingClientRect();
+      if (!found && rect.top < window.innerHeight && rect.bottom > 0) {
+        video.style.cssText = 'position:fixed!important;bottom:1rem;left:1rem;width:160px;height:90px;z-index:999;border-radius:6px;pointer-events:none;object-fit:cover;background:#000;opacity:1!important';
+        video.play().catch(() => {});
+        found = true;
+      } else {
+        video.style.cssText = 'position:absolute;opacity:0;pointer-events:none;width:1px;height:1px';
+      }
     });
+  };
+
+  showPip();
+  document.addEventListener('scroll', showPip, { passive: true });
+  document.addEventListener('touchstart', () => {
+    document.querySelector('.project-section .project-video[style*="fixed"]')?.play().catch(() => {});
   }, { once: true });
 }
