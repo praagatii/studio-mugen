@@ -122,6 +122,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity 0.8s ease;
 }
 
 .project-section .project-video {
@@ -135,16 +136,6 @@ body {
 .project-section.active .project-video {
   opacity: 1;
   transition: opacity 0.5s ease;
-}
-
-#cursor-video {
-  position: fixed;
-  width: 500px;
-  height: 281px;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 999;
-  opacity: 0;
 }
 
 #contact {
@@ -197,10 +188,6 @@ body {
   }
 
   #cursor-video {
-    display: none;
-  }
-
-  .project-section .project-video {
     display: none;
   }
 
