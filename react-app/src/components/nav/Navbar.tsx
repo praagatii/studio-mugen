@@ -60,16 +60,17 @@ export default function Navbar() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <a
-        href="/"
-        onClick={(e) => {
+      <button
+        onClick={() => {
           if (pathname === '/') {
-            e.preventDefault()
             const target = document.getElementById('hero')
             const l = (window as any).lenis
             if (target && l) l.scrollTo(target, { offset: -60 })
+          } else {
+            navigate('/')
           }
         }}
+        style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
       >
         <img
           src={mugenLogo}
@@ -80,7 +81,7 @@ export default function Navbar() {
             display: 'block',
           }}
         />
-      </a>
+      </button>
       <div style={{ display: 'flex', gap: 'clamp(20px, 3vw, 40px)' }}>
         {NAV_ITEMS.map((item) => {
           const active = isActive(item, pathname)

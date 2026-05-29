@@ -10,7 +10,7 @@ export default function DotBackground() {
         filter: 'blur(0.15px)',
         minWidth: '100vw',
         minHeight: '100vh',
-        transition: 'opacity 0.35s ease, filter 0.35s ease',
+        transition: 'opacity 0.35s ease',
       }}
     >
       <div style={{ width: '1080px', height: '1080px', position: 'relative' }}>

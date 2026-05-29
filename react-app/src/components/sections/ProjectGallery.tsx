@@ -48,7 +48,6 @@ function Card({
       scale: Math.max(0.4, 1 - Math.abs(c) * 0.18),
       ry: c * 6,
       opacity: Math.max(0.15, 1 - Math.abs(c) * 0.35),
-      blur: Math.min(4, Math.abs(c) * 1.5),
     }
   })
 
@@ -58,7 +57,6 @@ function Card({
       `translate(-50%, -50%) translate(${p.x}px, ${p.y}px) translateZ(${p.z}px) scale(${p.scale}) rotateY(${p.ry}deg)`,
   )
   const opacity = useTransform(pos, (p) => p.opacity)
-  const blur = useTransform(pos, (p) => `blur(${p.blur}px)`)
 
   const cursor = hasLink ? 'pointer' : 'default'
 
@@ -72,10 +70,10 @@ function Card({
         height: CARD_H,
         transform,
         opacity,
-        filter: blur,
         transformStyle: 'preserve-3d',
         cursor,
         zIndex: active ? 50 : 10,
+        willChange: 'transform',
       }}
       onClick={onClick}
     >
@@ -85,9 +83,7 @@ function Card({
           alt=""
           className="w-full h-full object-cover pointer-events-none select-none"
           draggable={false}
-          style={{
-            filter: active ? 'grayscale(0.4) contrast(1.1)' : 'grayscale(0.8) contrast(1) brightness(0.7)',
-          }}
+          style={{ filter: 'grayscale(0.6) contrast(1.05)' }}
         />
         <div
           className="absolute inset-0"
@@ -152,7 +148,12 @@ export default function ProjectGallery() {
     const sectionTop = sectionRef.current?.offsetTop ?? 0
     const sectionHeight = sectionRef.current?.offsetHeight ?? 0
     const scrollTarget = sectionTop + p * (sectionHeight - window.innerHeight)
-    window.scrollTo({ top: scrollTarget, behavior: 'smooth' })
+    const lenis = (window as any).lenis
+    if (lenis) {
+      lenis.scrollTo(scrollTarget, { duration: 1.6, easing: (t: number) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2 })
+    } else {
+      window.scrollTo({ top: scrollTarget, behavior: 'smooth' })
+    }
   }, [])
 
   const goToProject = useCallback(
@@ -167,7 +168,7 @@ export default function ProjectGallery() {
 
   const handleCardClick = useCallback(
     (projectIdx: number) => {
-      if (projectIdx < 2) navigate('/projects')
+      if (projectIdx < 2) navigate('/projects', { state: { scrollTo: PROJECTS[projectIdx].id } })
     },
     [navigate],
   )
