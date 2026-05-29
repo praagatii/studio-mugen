@@ -167,7 +167,7 @@ export default function ProjectGallery() {
 
   const handleCardClick = useCallback(
     (projectIdx: number) => {
-      if (projectIdx < 2) navigate(`/projects#${PROJECTS[projectIdx].id}`)
+      if (projectIdx < 2) navigate('/projects')
     },
     [navigate],
   )
@@ -189,10 +189,10 @@ export default function ProjectGallery() {
     <section
       id="gallery"
       ref={sectionRef}
-      className="relative bg-black"
-      style={{ minHeight: `${N * 100}vh` }}
+      className="relative"
+      style={{ minHeight: `${N * 100}vh`, background: '#000' }}
     >
-      <div className="sticky top-0 h-screen overflow-hidden bg-black">
+      <div className="sticky top-0 h-screen overflow-hidden" style={{ background: '#000' }}>
         <div
           className="absolute inset-0"
           style={{
