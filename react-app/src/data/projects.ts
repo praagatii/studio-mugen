@@ -49,17 +49,6 @@ export const PROJECTS: ProjectData[] = [
   },
   {
     id: 'project-2',
-    img: srirangaImg,
-    thumbnail: srirangaImg,
-    title: 'SRIRANGA ORGANICS',
-    year: '2026',
-    category: 'Brand Identity / Web Experience',
-    description: '',
-    role: '',
-    deliverables: [],
-  },
-  {
-    id: 'project-3',
     img: bangloreImg,
     thumbnail: bangloreImg,
     title: 'BANGLORE CENTRAL',
@@ -70,7 +59,7 @@ export const PROJECTS: ProjectData[] = [
     deliverables: [],
   },
   {
-    id: 'project-4',
+    id: 'project-3',
     img: blind75Img,
     thumbnail: blind75Img,
     title: 'SRIRANGA ORGANICS',
@@ -81,7 +70,7 @@ export const PROJECTS: ProjectData[] = [
     deliverables: [],
   },
   {
-    id: 'project-5',
+    id: 'project-4',
     img: rutamImg,
     thumbnail: rutamImg,
     title: 'RUTAM',
@@ -92,7 +81,7 @@ export const PROJECTS: ProjectData[] = [
     deliverables: [],
   },
   {
-    id: 'project-6',
+    id: 'project-5',
     img: p7Img,
     thumbnail: p7Img,
     title: 'RUTAM',
@@ -103,7 +92,7 @@ export const PROJECTS: ProjectData[] = [
     deliverables: [],
   },
   {
-    id: 'project-7',
+    id: 'project-6',
     img: p3Img,
     thumbnail: p3Img,
     title: 'RUTAM',
@@ -114,7 +103,7 @@ export const PROJECTS: ProjectData[] = [
     deliverables: [],
   },
   {
-    id: 'project-8',
+    id: 'project-7',
     img: miraiImg,
     thumbnail: miraiImg,
     title: 'MIRAI',

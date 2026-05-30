@@ -74,6 +74,12 @@ export default function HomePage() {
         className="section w-full h-screen flex items-center justify-center overflow-hidden"
         style={{ opacity: heroOpacity }}
       >
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 50% 35% at 50% 50%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 35%, transparent 65%)',
+          }}
+        />
         <img
           src={mugenLogo}
           alt="Mugen"
