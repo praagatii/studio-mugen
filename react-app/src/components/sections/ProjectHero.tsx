@@ -57,7 +57,7 @@ export default function ProjectHero({
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse 140% 100% at 0% 100%, rgba(0,0,0,0.65) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse 160% 100% at 0% 100%, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 35%, transparent 65%)',
         }}
       />
       <div

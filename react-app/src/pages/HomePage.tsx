@@ -205,12 +205,23 @@ export default function HomePage() {
           >
             Contact
           </h1>
-          <p
+          <div
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
           >
-            developer.mugen@gmail.com
-          </p>
+            <p>developer.mugen@gmail.com</p>
+            <p className="mt-2">
+              <a
+                href="https://www.instagram.com/madeby.mugen"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                madeby.mugen
+              </a>
+            </p>
+            <p className="mt-2">8050056552 / 6364003210</p>
+          </div>
         </div>
         <p
           className="absolute bottom-8 left-[4%] text-white/40 text-xs uppercase tracking-wider"
