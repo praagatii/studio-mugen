@@ -47,7 +47,7 @@ function Card({
       z: c * -180,
       scale: Math.max(0.4, 1 - Math.abs(c) * 0.18),
       ry: c * 6,
-      opacity: Math.max(0.15, 1 - Math.abs(c) * 0.35),
+      opacity: Math.max(0.15, 1 - Math.abs(c) * 0.22),
     }
   })
 
