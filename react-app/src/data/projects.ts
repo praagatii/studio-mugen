@@ -50,8 +50,8 @@ export const PROJECTS: ProjectData[] = [
   },
   {
     id: 'project-2',
-    img: p3Img,
-    thumbnail: p3Img,
+    img: p5Img,
+    thumbnail: p5Img,
     title: 'SRIRANGA ORGANICS',
     year: '2026',
     category: 'Brand Identity / Web Experience',
@@ -105,8 +105,8 @@ export const PROJECTS: ProjectData[] = [
   },
   {
     id: 'project-7',
-    img: p5Img,
-    thumbnail: p5Img,
+    img: p3Img,
+    thumbnail: p3Img,
     title: 'RUTAM',
     year: '2026',
     category: 'Visual Identity / Branding',
