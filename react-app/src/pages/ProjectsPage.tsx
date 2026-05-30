@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
 import Navbar from '../components/nav/Navbar'
@@ -40,6 +41,13 @@ export default function ProjectsPage() {
 
   return (
     <div className="relative z-10">
+      <Helmet>
+        <title>Projects — Mugen Studios</title>
+        <meta name="description" content="Explore Mugen Studios' portfolio of cinematic digital experiences, branding, and visual identity projects." />
+        <link rel="canonical" href="https://studio-mugen.com/projects" />
+        <meta property="og:title" content="Projects — Mugen Studios" />
+        <meta property="og:url" content="https://studio-mugen.com/projects" />
+      </Helmet>
       <Navbar />
 
       {SHOW_PROJECTS.map((project) => (

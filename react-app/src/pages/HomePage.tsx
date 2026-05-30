@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Helmet } from 'react-helmet-async'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import Navbar from '../components/nav/Navbar'
@@ -66,6 +67,13 @@ export default function HomePage() {
 
   return (
     <div className="relative z-10">
+      <Helmet>
+        <title>Mugen Studios — Cinematic Digital Experiences</title>
+        <meta name="description" content="Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create timeless, atmospheric work." />
+        <link rel="canonical" href="https://studio-mugen.com/" />
+        <meta property="og:title" content="Mugen Studios — Cinematic Digital Experiences" />
+        <meta property="og:url" content="https://studio-mugen.com/" />
+      </Helmet>
       <Navbar />
 
       <motion.section
