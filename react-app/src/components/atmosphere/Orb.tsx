@@ -49,11 +49,10 @@ export default function Orb({
       cy,
       r
     )
-    grad.addColorStop(0, 'rgba(255, 255, 255, 0.35)')
-    grad.addColorStop(0.2, 'rgba(200, 200, 200, 0.18)')
-    grad.addColorStop(0.45, 'rgba(120, 120, 120, 0.10)')
-    grad.addColorStop(0.7, 'rgba(60, 60, 60, 0.05)')
-    grad.addColorStop(1, 'rgba(0, 0, 0, 0)')
+    grad.addColorStop(0, 'rgba(255, 255, 255, 0.30)')
+    grad.addColorStop(0.3, 'rgba(255, 255, 255, 0.12)')
+    grad.addColorStop(0.6, 'rgba(255, 255, 255, 0.04)')
+    grad.addColorStop(1, 'rgba(255, 255, 255, 0)')
 
     ctx.fillStyle = grad
     ctx.beginPath()
@@ -62,9 +61,8 @@ export default function Orb({
 
     const ringGrad = ctx.createRadialGradient(cx, cy, r * 0.5, cx, cy, r * 1.1)
     ringGrad.addColorStop(0, 'rgba(255, 255, 255, 0)')
-    ringGrad.addColorStop(0.5, 'rgba(180, 180, 180, 0.04)')
-    ringGrad.addColorStop(0.8, 'rgba(100, 100, 100, 0.08)')
-    ringGrad.addColorStop(1, 'rgba(0, 0, 0, 0)')
+    ringGrad.addColorStop(0.6, 'rgba(255, 255, 255, 0.03)')
+    ringGrad.addColorStop(1, 'rgba(255, 255, 255, 0)')
 
     ctx.fillStyle = ringGrad
     ctx.beginPath()
