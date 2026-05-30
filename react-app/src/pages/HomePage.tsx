@@ -93,8 +93,6 @@ export default function HomePage() {
         />
       </motion.section>
 
-      <ProjectGallery />
-
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
         <div
@@ -122,6 +120,8 @@ export default function HomePage() {
           </p>
         </div>
       </SectionFadeIn>
+
+      <ProjectGallery />
 
       <SectionFadeIn id="about">
         <img
