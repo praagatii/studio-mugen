@@ -1,6 +1,16 @@
+import { useEffect, useState } from 'react'
 import DotGrid from './DotGrid'
 
 export default function DotBackground() {
+  const [scale, setScale] = useState(1)
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    setScale(mq.matches ? 0.4 : 1)
+    const handler = (e: MediaQueryListEvent) => setScale(e.matches ? 0.4 : 1)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
   return (
     <div
       className="fixed inset-0 w-screen h-screen overflow-hidden"
@@ -13,7 +23,7 @@ export default function DotBackground() {
         transition: 'opacity 0.35s ease',
       }}
     >
-      <div style={{ width: '1080px', height: '1080px', position: 'relative' }}>
+      <div style={{ width: '1080px', height: '1080px', position: 'relative', opacity: scale }}>
         <DotGrid
           dotSize={10}
           gap={38}

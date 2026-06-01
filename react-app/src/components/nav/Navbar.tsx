@@ -1,5 +1,5 @@
-import { useCallback } from 'react'
-import { motion } from 'framer-motion'
+import { useCallback, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
 
@@ -20,6 +20,7 @@ function isActive(item: string, pathname: string) {
 export default function Navbar() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
@@ -27,29 +28,38 @@ export default function Navbar() {
       if (item === 'Home') {
         e.preventDefault()
         navigate('/')
+        setMenuOpen(false)
         return
       }
       if (item === 'Projects') {
         e.preventDefault()
         navigate('/projects')
+        setMenuOpen(false)
         return
       }
       e.preventDefault()
       const hash = href.replace('/#', '')
+      if (pathname !== '/') {
+        navigate('/#' + hash)
+        setMenuOpen(false)
+        return
+      }
       const target = document.getElementById(hash)
       const l = (window as any).lenis
       if (target && l) {
         l.scrollTo(target, { offset: -60 })
       }
+      setMenuOpen(false)
     },
-    [navigate],
+    [navigate, pathname],
   )
 
   return (
-    <motion.nav
+    <>
+      <motion.nav
       className="fixed top-0 left-0 w-full z-50"
       style={{
-        padding: '28px 56px',
+        padding: 'clamp(16px, 3vw, 28px) clamp(20px, 4vw, 56px)',
         background: 'transparent',
         display: 'flex',
         alignItems: 'center',
@@ -69,6 +79,7 @@ export default function Navbar() {
           } else {
             navigate('/')
           }
+          setMenuOpen(false)
         }}
         style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
       >
@@ -82,7 +93,8 @@ export default function Navbar() {
           }}
         />
       </button>
-      <div style={{ display: 'flex', gap: 'clamp(20px, 3vw, 40px)' }}>
+
+      <div className="hidden md:flex" style={{ gap: 'clamp(20px, 3vw, 40px)' }}>
         {NAV_ITEMS.map((item) => {
           const active = isActive(item, pathname)
           return (
@@ -125,6 +137,100 @@ export default function Navbar() {
           )
         })}
       </div>
-    </motion.nav>
+
+      <button
+        className="md:hidden flex items-center justify-center"
+        onClick={() => setMenuOpen(!menuOpen)}
+        style={{
+          background: 'none',
+          border: 'none',
+          padding: '8px',
+          cursor: 'pointer',
+          width: '34px',
+          height: '34px',
+        }}
+        aria-label="Toggle menu"
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'center' }}>
+          <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'white', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+          <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'white', transition: 'all 0.3s ease', opacity: menuOpen ? 0 : 1 }} />
+          <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'white', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+        </div>
+      </button>
+
+      </motion.nav>
+
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="fixed inset-0 z-[60] md:hidden"
+            style={{
+              background: '#000',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '32px',
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setMenuOpen(false)}
+          >
+            <button
+              onClick={() => setMenuOpen(false)}
+              style={{
+                position: 'absolute',
+                top: 'clamp(16px, 3vw, 28px)',
+                right: 'clamp(20px, 4vw, 56px)',
+                background: 'none',
+                border: 'none',
+                padding: '8px',
+                cursor: 'pointer',
+                width: '34px',
+                height: '34px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '5px',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Close menu"
+            >
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(45deg)', position: 'absolute' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(-45deg)', position: 'absolute' }} />
+            </button>
+            {NAV_ITEMS.map((item) => {
+              const active = isActive(item, pathname)
+              return (
+                <a
+                  key={item}
+                  href={getHref(item)}
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleClick(e, item)
+                  }}
+                  style={{
+                    color: 'white',
+                    fontSize: '1.25rem',
+                    letterSpacing: '0.14em',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    fontFamily: "'Montserrat', sans-serif",
+                    fontWeight: active ? 400 : 300,
+                    opacity: active ? 1 : 0.7,
+                    transition: 'opacity 0.3s ease',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {item}
+                </a>
+              )
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

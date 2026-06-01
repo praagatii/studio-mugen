@@ -1,11 +1,24 @@
-import { useRef, useState, useCallback } from 'react'
+import { useRef, useState, useCallback, useEffect } from 'react'
 import { PROJECTS } from '../../data/projects'
+
+function useResponsiveVideoSize() {
+  const [size, setSize] = useState({ w: 500, h: 281 })
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    setSize(mq.matches ? { w: 250, h: 140 } : { w: 500, h: 281 })
+    const handler = (e: MediaQueryListEvent) => setSize(e.matches ? { w: 250, h: 140 } : { w: 500, h: 281 })
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return size
+}
 
 export default function ProjectHero({
   project,
 }: {
   project: (typeof PROJECTS)[0]
 }) {
+  const { w: videoW, h: videoH } = useResponsiveVideoSize()
   const cursorVideoRef = useRef<HTMLVideoElement | null>(null)
   const leaveTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const [isHovering, setIsHovering] = useState(false)
@@ -89,8 +102,8 @@ export default function ProjectHero({
         ref={cursorVideoRef}
         className="fixed pointer-events-none z-50 object-cover"
         style={{
-          width: '500px',
-          height: '281px',
+          width: `${videoW}px`,
+          height: `${videoH}px`,
           opacity: isHovering ? 1 : 0,
           transition: 'opacity 1.2s cubic-bezier(0.2, 0.9, 0.3, 1)',
         }}

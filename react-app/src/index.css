@@ -40,3 +40,19 @@ body {
 .nav-link:hover .nav-underline {
   width: 100% !important;
 }
+
+@media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  .section-text {
+    max-width: 85% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-text {
+    max-width: 90% !important;
+  }
+}

@@ -13,8 +13,8 @@ import { PROJECTS } from '../../data/projects'
 const N = PROJECTS.length
 const SPACING = 320
 
-const CARD_W = 400
-const CARD_H = 280
+let CARD_W = 400
+let CARD_H = 280
 
 function Card({
   index,
@@ -26,6 +26,8 @@ function Card({
   year,
   category,
   hasLink,
+  cardW,
+  cardH,
 }: {
   index: number
   progress: MotionValue<number>
@@ -36,6 +38,8 @@ function Card({
   year: string
   category: string
   hasLink: boolean
+  cardW: number
+  cardH: number
 }) {
   const pos = useTransform(progress, (p) => {
     const raw = index - p * N
@@ -66,8 +70,8 @@ function Card({
       style={{
         left: '50%',
         top: '50%',
-        width: CARD_W,
-        height: CARD_H,
+        width: cardW,
+        height: cardH,
         transform,
         opacity,
         transformStyle: 'preserve-3d',
@@ -115,7 +119,20 @@ function Card({
   )
 }
 
+function useResponsiveCardSize() {
+  const [size, setSize] = useState({ w: 400, h: 280 })
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)')
+    setSize(mq.matches ? { w: 220, h: 154 } : { w: 400, h: 280 })
+    const handler = (e: MediaQueryListEvent) => setSize(e.matches ? { w: 220, h: 154 } : { w: 400, h: 280 })
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+  return size
+}
+
 export default function ProjectGallery() {
+  const { w: cardW, h: cardH } = useResponsiveCardSize()
   const sectionRef = useRef<HTMLElement>(null)
   const activeRef = useRef(0)
   const navigate = useNavigate()
@@ -213,6 +230,8 @@ export default function ProjectGallery() {
               year={p.year}
               category={p.category}
               hasLink={i < 2}
+              cardW={cardW}
+              cardH={cardH}
             />
           ))}
         </div>
