@@ -4,6 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import Navbar from '../components/nav/Navbar'
 import ProjectGallery from '../components/sections/ProjectGallery'
+import TechStack from '../components/sections/TechStack'
+import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
 import mugenLogo from '../assets/mugen.png'
 import blackholeImg from '../assets/blackhole.png'
 
@@ -24,7 +26,7 @@ function SectionOverlay() {
   return (
     <div
       className="absolute inset-0 z-1 pointer-events-none"
-      style={{ background: 'rgba(0,0,0,0.5)' }}
+      style={{ background: 'var(--section-overlay)' }}
     />
   )
 }
@@ -121,6 +123,8 @@ export default function HomePage() {
 
       <ProjectGallery />
 
+      <TechStack />
+
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
         <div
@@ -204,7 +208,7 @@ export default function HomePage() {
 
       <SectionFadeIn
         id="contact"
-        style={{ background: '#000' }}
+        style={{ background: 'var(--section-bg)' }}
       >
         <div
           className="absolute z-2"
@@ -260,6 +264,8 @@ export default function HomePage() {
           &copy; 2026 Mugen Studios. All rights reserved.
         </p>
       </SectionFadeIn>
+
+      <FloatingWhatsApp />
     </div>
   )
 }

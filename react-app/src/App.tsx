@@ -1,5 +1,6 @@
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ThemeProvider } from './context/ThemeContext'
 import DotBackground from './components/background/DotBackground'
 import Grain from './components/atmosphere/Grain'
 import LightLeak from './components/atmosphere/LightLeak'
@@ -10,6 +11,7 @@ import bgWatermark from './assets/mugen-bg-watermark.png'
 export default function App() {
   return (
     <HelmetProvider>
+    <ThemeProvider>
     <BrowserRouter basename={import.meta.env.BASE_URL}>
       <img
         src={bgWatermark}
@@ -38,6 +40,7 @@ export default function App() {
         <Route path="/projects" element={<ProjectsPage />} />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
     </HelmetProvider>
   )
 }

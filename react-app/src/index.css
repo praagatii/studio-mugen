@@ -5,7 +5,7 @@
   --font-anton: 'Anton', sans-serif;
 }
 
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,14 +21,52 @@ html::-webkit-scrollbar {
   display: none;
 }
 
+:root {
+  --bg-primary: #000;
+  --bg-secondary: rgba(0,0,0,0.5);
+  --text-primary: #fff;
+  --text-secondary: rgba(255,255,255,0.7);
+  --text-muted: rgba(255,255,255,0.25);
+  --border-subtle: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.25);
+  --card-bg: rgba(255,255,255,0.02);
+  --card-bg-hover: rgba(255,255,255,0.04);
+  --overlay-bg: rgba(0,0,0,0.5);
+  --nav-blend: difference;
+  --nav-color: #fff;
+  --nav-hamburger: #fff;
+  --section-bg: #000;
+  --section-overlay: rgba(0,0,0,0.5);
+  --transition-speed: 0.4s;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f5f3ee;
+  --bg-secondary: rgba(255,255,255,0.6);
+  --text-primary: #1a1a1a;
+  --text-secondary: rgba(26,26,26,0.65);
+  --text-muted: rgba(26,26,26,0.3);
+  --border-subtle: rgba(26,26,26,0.08);
+  --border-hover: rgba(26,26,26,0.2);
+  --card-bg: rgba(26,26,26,0.02);
+  --card-bg-hover: rgba(26,26,26,0.04);
+  --overlay-bg: rgba(255,255,255,0.4);
+  --nav-blend: normal;
+  --nav-color: #1a1a1a;
+  --nav-hamburger: #1a1a1a;
+  --section-bg: #f5f3ee;
+  --section-overlay: rgba(255,255,255,0.3);
+}
+
 body {
-  background: #000;
-  color: #fff;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-montserrat);
   font-weight: 300;
   overflow-x: hidden;
   height: 100%;
   min-height: 100vh;
+  transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
 }
 
 #root {
