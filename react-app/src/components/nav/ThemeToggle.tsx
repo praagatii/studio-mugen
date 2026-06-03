@@ -11,7 +11,8 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
       aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       style={{
         background: 'none',
-        border: '1px solid rgba(255,255,255,0.15)',
+        border: '1px solid var(--nav-color)',
+        opacity: 0.35,
         borderRadius: '50%',
         width: '36px',
         height: '36px',
@@ -20,10 +21,10 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
         justifyContent: 'center',
         cursor: 'pointer',
         position: 'relative',
-        transition: 'border-color 0.3s ease, background 0.3s ease',
+        transition: 'opacity 0.3s ease, border-color 0.3s ease, background 0.3s ease',
       }}
-      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
-      onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; e.currentTarget.style.background = 'transparent' }}
+      onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)' }}
+      onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.35'; e.currentTarget.style.background = 'transparent' }}
     >
       <motion.div
         key={theme}
@@ -34,7 +35,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
         style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         {theme === 'dark' ? (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--nav-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="5" />
             <line x1="12" y1="1" x2="12" y2="3" />
             <line x1="12" y1="21" x2="12" y2="23" />
@@ -46,7 +47,7 @@ export default function ThemeToggle({ className = '' }: { className?: string }) 
             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
           </svg>
         ) : (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--nav-color)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
           </svg>
         )}

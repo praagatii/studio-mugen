@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
 import ThemeToggle from './ThemeToggle'
+import { useTheme } from '../../context/ThemeContext'
 
 const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Technology', 'Projects', 'Contact']
 
@@ -23,6 +24,7 @@ export default function Navbar() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
+  const { theme } = useTheme()
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
@@ -113,18 +115,17 @@ export default function Navbar() {
                   textDecoration: 'none',
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 300,
-                  opacity: active ? 1 : 0.75,
-                  transition: 'opacity 0.35s ease, color 0.4s ease',
+                  opacity: active ? 1 : 0.6,
+                  transition: 'opacity 0.35s ease',
                   position: 'relative',
                   paddingBottom: '2px',
                   cursor: 'pointer',
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
-                onMouseLeave={(e) => { e.currentTarget.style.opacity = active ? '1' : '0.75' }}
+                onMouseLeave={(e) => { e.currentTarget.style.opacity = active ? '1' : '0.6' }}
               >
                 {item === 'Work / Portfolio' ? 'Work' : item}
                 <span
-                  className="nav-underline"
                   style={{
                     position: 'absolute',
                     left: 0,
@@ -132,7 +133,7 @@ export default function Navbar() {
                     width: active ? '100%' : '0%',
                     height: '1px',
                     backgroundColor: 'var(--nav-color)',
-                    transition: 'width 0.35s ease, background-color 0.4s ease',
+                    transition: 'width 0.35s ease',
                   }}
                 />
               </a>
@@ -141,8 +142,7 @@ export default function Navbar() {
           <ThemeToggle />
         </div>
 
-        <div className="md:hidden flex items-center" style={{ gap: '10px' }}>
-          <ThemeToggle />
+        <div className="md:hidden flex items-center" style={{ gap: '8px' }}>
           <button
             className="flex items-center justify-center"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -157,9 +157,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'center' }}>
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-hamburger)', transition: 'all 0.3s ease, background-color 0.4s ease', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-hamburger)', transition: 'all 0.3s ease, background-color 0.4s ease', opacity: menuOpen ? 0 : 1 }} />
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-hamburger)', transition: 'all 0.3s ease, background-color 0.4s ease', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
             </div>
           </button>
         </div>
@@ -170,12 +170,12 @@ export default function Navbar() {
           <motion.div
             className="fixed inset-0 z-[60] md:hidden"
             style={{
-              background: '#000',
+              background: theme === 'dark' ? '#000' : 'rgba(245,243,238,0.97)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '32px',
+              gap: '28px',
             }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -196,15 +196,13 @@ export default function Navbar() {
                 width: '34px',
                 height: '34px',
                 display: 'flex',
-                flexDirection: 'column',
-                gap: '5px',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
               aria-label="Close menu"
             >
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(45deg)', position: 'absolute' }} />
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(-45deg)', position: 'absolute' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'var(--text-primary)', transform: 'rotate(45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'var(--text-primary)', transform: 'rotate(-45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
             </button>
             {NAV_ITEMS.map((item) => {
               const active = isActive(item, pathname)
@@ -217,14 +215,14 @@ export default function Navbar() {
                     handleClick(e, item)
                   }}
                   style={{
-                    color: 'white',
+                    color: 'var(--text-primary)',
                     fontSize: '1.25rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
                     textDecoration: 'none',
                     fontFamily: "'Montserrat', sans-serif",
                     fontWeight: active ? 400 : 300,
-                    opacity: active ? 1 : 0.7,
+                    opacity: active ? 1 : 0.6,
                     transition: 'opacity 0.3s ease',
                     cursor: 'pointer',
                   }}
@@ -233,7 +231,7 @@ export default function Navbar() {
                 </a>
               )
             })}
-            <div style={{ marginTop: '8px' }}>
+            <div style={{ marginTop: '12px' }}>
               <ThemeToggle />
             </div>
           </motion.div>
