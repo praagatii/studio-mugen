@@ -51,11 +51,11 @@ html::-webkit-scrollbar {
   --card-bg: rgba(26,26,26,0.02);
   --card-bg-hover: rgba(26,26,26,0.04);
   --overlay-bg: rgba(255,255,255,0.4);
-  --nav-blend: normal;
-  --nav-color: #1a1a1a;
-  --nav-hamburger: #1a1a1a;
-  --section-bg: #f5f3ee;
-  --section-overlay: rgba(255,255,255,0.3);
+  --nav-blend: difference;
+  --nav-color: #fff;
+  --nav-hamburger: #fff;
+  --section-bg: #000;
+  --section-overlay: rgba(0,0,0,0.5);
 }
 
 body {
