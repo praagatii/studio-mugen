@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useTheme } from '../../context/ThemeContext'
 
 const groups = [
   {
@@ -34,7 +33,6 @@ const groupVariants = {
 }
 
 export default function TechStack() {
-  const { theme } = useTheme()
   return (
     <motion.section
       id="technology"
@@ -103,8 +101,8 @@ export default function TechStack() {
                 transition: 'border-color 0.3s ease, background 0.3s ease',
               }}
               whileHover={{
-                borderColor: 'var(--border-color)',
-                background: theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.7)',
+                borderColor: 'rgba(255,255,255,0.2)',
+                background: 'rgba(255,255,255,0.03)',
                 y: -2,
               }}
             >

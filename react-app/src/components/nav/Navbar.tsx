@@ -2,8 +2,6 @@ import { useCallback, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
-import ThemeToggle from './ThemeToggle'
-import { useTheme } from '../../context/ThemeContext'
 
 const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Technology', 'Projects', 'Contact']
 
@@ -24,7 +22,6 @@ export default function Navbar() {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
-  const { theme } = useTheme()
 
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, item: string) => {
@@ -69,9 +66,6 @@ export default function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
           mixBlendMode: 'var(--nav-blend)' as any,
-          backdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
-          WebkitBackdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
-          transition: 'background 0.4s ease',
         }}
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,8 +91,7 @@ export default function Navbar() {
               height: 'clamp(22px, 2.5vw, 32px)',
               width: 'auto',
               display: 'block',
-              filter: theme === 'light' ? 'brightness(0)' : 'none',
-              transition: 'filter 0.4s ease',
+              filter: 'none',
             }}
           />
         </button>
@@ -144,7 +137,6 @@ export default function Navbar() {
               </a>
             )
           })}
-          <ThemeToggle />
         </div>
 
         <div className="md:hidden flex items-center">
@@ -175,7 +167,7 @@ export default function Navbar() {
           <motion.div
             className="fixed inset-0 z-[60] md:hidden"
             style={{
-              background: theme === 'dark' ? '#000' : 'rgba(245,243,238,0.98)',
+              background: '#000',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -206,8 +198,8 @@ export default function Navbar() {
               }}
               aria-label="Close menu"
             >
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: theme === 'dark' ? 'white' : '#1a1a1a', transform: 'rotate(45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: theme === 'dark' ? 'white' : '#1a1a1a', transform: 'rotate(-45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(45deg)', position: 'absolute' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'white', transform: 'rotate(-45deg)', position: 'absolute' }} />
             </button>
             {NAV_ITEMS.map((item) => {
               const active = isActive(item, pathname)
@@ -220,7 +212,7 @@ export default function Navbar() {
                     handleClick(e, item)
                   }}
                   style={{
-                    color: theme === 'dark' ? 'white' : '#1a1a1a',
+                    color: 'white',
                     fontSize: '1.25rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
@@ -236,9 +228,6 @@ export default function Navbar() {
                 </a>
               )
             })}
-            <div style={{ marginTop: '12px' }}>
-              <ThemeToggle />
-            </div>
           </motion.div>
         )}
       </AnimatePresence>
