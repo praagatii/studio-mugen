@@ -28,6 +28,8 @@ html::-webkit-scrollbar {
   --text-muted: rgba(255,255,255,0.3);
   --border-color: rgba(255,255,255,0.08);
   --card-bg: rgba(255,255,255,0.02);
+  --card-border: rgba(255,255,255,0.06);
+  --nav-bg: transparent;
   --nav-blend: difference;
   --nav-color: #fff;
   --section-bg: #000;
@@ -43,14 +45,16 @@ html::-webkit-scrollbar {
   --text-primary: #1a1a1a;
   --text-secondary: rgba(26,26,26,0.65);
   --text-muted: rgba(26,26,26,0.3);
-  --border-color: rgba(26,26,26,0.08);
-  --card-bg: rgba(26,26,26,0.02);
-  --nav-blend: difference;
-  --nav-color: #fff;
+  --border-color: rgba(26,26,26,0.1);
+  --card-bg: rgba(255,255,255,0.5);
+  --card-border: rgba(26,26,26,0.08);
+  --nav-bg: rgba(245,243,238,0.85);
+  --nav-blend: normal;
+  --nav-color: #1a1a1a;
   --section-bg: #000;
   --section-overlay: rgba(0,0,0,0.5);
-  --wa-bg: rgba(0,0,0,0.1);
-  --wa-border: rgba(0,0,0,0.2);
+  --wa-bg: rgba(0,0,0,0.06);
+  --wa-border: rgba(0,0,0,0.15);
   --wa-icon: #1a1a1a;
 }
 
@@ -75,32 +79,20 @@ body {
   width: 100% !important;
 }
 
-[data-theme="light"] .text-white {
-  color: var(--text-primary) !important;
+[data-theme="light"] #portfolio,
+[data-theme="light"] #technology,
+[data-theme="light"] #contact {
+  background: #f5f3ee !important;
 }
 
-[data-theme="light"] .text-white\/30 {
-  color: color-mix(in srgb, var(--text-primary) 30%, transparent) !important;
-}
-
-[data-theme="light"] .text-white\/40 {
-  color: color-mix(in srgb, var(--text-primary) 40%, transparent) !important;
-}
-
-[data-theme="light"] .text-white\/20 {
-  color: color-mix(in srgb, var(--text-primary) 20%, transparent) !important;
-}
-
-[data-theme="light"] .bg-black\/80 {
-  background: color-mix(in srgb, var(--bg-primary) 80%, transparent) !important;
-}
-
-[data-theme="light"] .border-white\/20 {
-  border-color: color-mix(in srgb, var(--text-primary) 20%, transparent) !important;
-}
-
-[data-theme="light"] text-white {
-  color: var(--text-primary);
+[data-theme="light"] #portfolio .text-white,
+[data-theme="light"] #portfolio .text-white\/30,
+[data-theme="light"] #technology .text-white,
+[data-theme="light"] #technology .text-white\/30,
+[data-theme="light"] #technology .text-white\/60,
+[data-theme="light"] #contact .text-white,
+[data-theme="light"] #contact .text-white\/40 {
+  color: #1a1a1a !important;
 }
 
 @media (max-width: 767px) {

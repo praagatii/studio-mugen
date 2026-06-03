@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useTheme } from '../../context/ThemeContext'
 
 const groups = [
   {
@@ -27,24 +28,18 @@ const groups = [
   },
 ]
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.15 },
-  },
-}
-
 const groupVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
 }
 
 export default function TechStack() {
+  const { theme } = useTheme()
   return (
     <motion.section
       id="technology"
-      className="section relative w-full min-h-screen overflow-hidden"
+      className="section relative w-full overflow-hidden"
+      style={{ minHeight: '100vh' }}
       initial={{ opacity: 0.6 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: '-10% 0px' }}
@@ -52,12 +47,12 @@ export default function TechStack() {
     >
       <div className="absolute inset-0 z-1 pointer-events-none" style={{ background: 'var(--section-overlay)' }} />
 
-      <div className="absolute z-2" style={{ top: 'clamp(8%, 10vw, 15%)', left: '4%', maxWidth: '75%' }}>
+      <div style={{ padding: 'clamp(80px, 12vw, 140px) 4% clamp(48px, 6vw, 80px)', position: 'relative', zIndex: 2 }}>
         <motion.h1
           className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
           style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(2.2rem, 7vw, 5rem)',
+            fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
           }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -69,8 +64,12 @@ export default function TechStack() {
           Behind Mugen
         </motion.h1>
         <motion.p
-          className="text-white/30 font-light text-left mt-3 max-w-[540px] leading-relaxed"
-          style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.05rem)' }}
+          className="text-white/30 font-light text-left leading-relaxed"
+          style={{
+            fontSize: 'clamp(0.85rem, 1.2vw, 1.05rem)',
+            maxWidth: '540px',
+            marginTop: 'clamp(8px, 1.2vw, 16px)',
+          }}
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -78,27 +77,14 @@ export default function TechStack() {
         >
           The tools, frameworks, and systems we use to turn ideas into digital experiences.
         </motion.p>
-      </div>
 
-      <div
-        className="absolute z-2"
-        style={{
-          top: 'clamp(38%, 45vw, 50%)',
-          left: '4%',
-          right: '4%',
-          bottom: 'clamp(4%, 6vw, 8%)',
-          overflowY: 'auto',
-        }}
-      >
         <motion.div
-          className="text-white"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: 'clamp(16px, 2vw, 24px)',
-            paddingRight: '8px',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+            gap: 'clamp(16px, 1.8vw, 24px)',
+            marginTop: 'clamp(40px, 6vw, 80px)',
           }}
-          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-5% 0px' }}
@@ -108,64 +94,63 @@ export default function TechStack() {
               key={group.label}
               variants={groupVariants}
               style={{
-                border: '1px solid rgba(255,255,255,0.06)',
+                border: '1px solid var(--card-border)',
                 borderRadius: '8px',
-                padding: 'clamp(16px, 2vw, 22px)',
-                background: 'rgba(255,255,255,0.015)',
+                padding: 'clamp(20px, 2.5vw, 28px)',
+                background: 'var(--card-bg)',
                 backdropFilter: 'blur(6px)',
                 WebkitBackdropFilter: 'blur(6px)',
                 transition: 'border-color 0.3s ease, background 0.3s ease',
               }}
-              whileHover={{ borderColor: 'rgba(255,255,255,0.2)', background: 'rgba(255,255,255,0.03)' }}
+              whileHover={{
+                borderColor: 'var(--border-color)',
+                background: theme === 'dark' ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.7)',
+                y: -2,
+              }}
             >
               <p
+                className="text-white/30"
                 style={{
                   fontFamily: "'Montserrat', sans-serif",
                   fontSize: 'clamp(0.55rem, 0.65vw, 0.65rem)',
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase',
-                  color: 'rgba(255,255,255,0.3)',
-                  marginBottom: '14px',
+                  marginBottom: 'clamp(14px, 1.8vw, 20px)',
                   fontWeight: 400,
                 }}
               >
                 {group.label}
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                {group.items.map((name, i) => (
-                  <motion.span
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {group.items.map((name) => (
+                  <span
                     key={name}
-                    initial={{ opacity: 0, y: 8 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: i * 0.03, ease: 'easeOut' }}
-                    whileHover={{ y: -2, scale: 1.02 }}
+                    className="text-white/60"
                     style={{
                       fontFamily: "'Montserrat', sans-serif",
                       fontSize: 'clamp(0.7rem, 0.85vw, 0.8rem)',
                       fontWeight: 300,
                       letterSpacing: '0.04em',
-                      color: 'rgba(255,255,255,0.6)',
-                      border: '1px solid rgba(255,255,255,0.06)',
+                      border: '1px solid var(--card-border)',
                       borderRadius: '4px',
-                      padding: '4px 12px',
-                      background: 'rgba(255,255,255,0.02)',
+                      padding: '5px 14px',
                       cursor: 'default',
+                      background: 'var(--card-bg)',
                       transition: 'color 0.3s ease, border-color 0.3s ease, background 0.3s ease',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'rgba(255,255,255,0.95)'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.04)'
+                      e.currentTarget.style.color = 'var(--text-primary)'
+                      e.currentTarget.style.borderColor = 'var(--border-color)'
+                      e.currentTarget.style.background = 'var(--card-bg)'
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'rgba(255,255,255,0.6)'
-                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
-                      e.currentTarget.style.background = 'rgba(255,255,255,0.02)'
+                      e.currentTarget.style.color = 'var(--text-secondary)'
+                      e.currentTarget.style.borderColor = 'var(--card-border)'
+                      e.currentTarget.style.background = 'var(--card-bg)'
                     }}
                   >
                     {name}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
             </motion.div>

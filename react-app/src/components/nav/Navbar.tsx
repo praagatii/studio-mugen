@@ -64,11 +64,14 @@ export default function Navbar() {
         className="fixed top-0 left-0 w-full z-50"
         style={{
           padding: 'clamp(16px, 3vw, 28px) clamp(20px, 4vw, 56px)',
-          background: 'transparent',
+          background: 'var(--nav-bg)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
           mixBlendMode: 'var(--nav-blend)' as any,
+          backdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
+          WebkitBackdropFilter: theme === 'light' ? 'blur(10px)' : 'none',
+          transition: 'background 0.4s ease',
         }}
         initial={{ opacity: 0, y: -16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,6 +97,8 @@ export default function Navbar() {
               height: 'clamp(22px, 2.5vw, 32px)',
               width: 'auto',
               display: 'block',
+              filter: theme === 'light' ? 'brightness(0)' : 'none',
+              transition: 'filter 0.4s ease',
             }}
           />
         </button>
@@ -116,7 +121,7 @@ export default function Navbar() {
                   fontFamily: "'Montserrat', sans-serif",
                   fontWeight: 300,
                   opacity: active ? 1 : 0.6,
-                  transition: 'opacity 0.35s ease',
+                  transition: 'opacity 0.35s ease, color 0.4s ease',
                   position: 'relative',
                   paddingBottom: '2px',
                   cursor: 'pointer',
@@ -133,7 +138,7 @@ export default function Navbar() {
                     width: active ? '100%' : '0%',
                     height: '1px',
                     backgroundColor: 'var(--nav-color)',
-                    transition: 'width 0.35s ease',
+                    transition: 'width 0.35s ease, background-color 0.4s ease',
                   }}
                 />
               </a>
@@ -142,7 +147,7 @@ export default function Navbar() {
           <ThemeToggle />
         </div>
 
-        <div className="md:hidden flex items-center" style={{ gap: '8px' }}>
+        <div className="md:hidden flex items-center">
           <button
             className="flex items-center justify-center"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -157,9 +162,9 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', alignItems: 'center' }}>
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', opacity: menuOpen ? 0 : 1 }} />
-              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease, background-color 0.4s ease', transform: menuOpen ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease, background-color 0.4s ease', opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ display: 'block', width: '18px', height: '1.5px', backgroundColor: 'var(--nav-color)', transition: 'all 0.3s ease, background-color 0.4s ease', transform: menuOpen ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
             </div>
           </button>
         </div>
@@ -170,7 +175,7 @@ export default function Navbar() {
           <motion.div
             className="fixed inset-0 z-[60] md:hidden"
             style={{
-              background: theme === 'dark' ? '#000' : 'rgba(245,243,238,0.97)',
+              background: theme === 'dark' ? '#000' : 'rgba(245,243,238,0.98)',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
@@ -201,8 +206,8 @@ export default function Navbar() {
               }}
               aria-label="Close menu"
             >
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'var(--text-primary)', transform: 'rotate(45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
-              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: 'var(--text-primary)', transform: 'rotate(-45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: theme === 'dark' ? 'white' : '#1a1a1a', transform: 'rotate(45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
+              <span style={{ display: 'block', width: '20px', height: '1.5px', backgroundColor: theme === 'dark' ? 'white' : '#1a1a1a', transform: 'rotate(-45deg)', position: 'absolute', transition: 'background 0.4s ease' }} />
             </button>
             {NAV_ITEMS.map((item) => {
               const active = isActive(item, pathname)
@@ -215,7 +220,7 @@ export default function Navbar() {
                     handleClick(e, item)
                   }}
                   style={{
-                    color: 'var(--text-primary)',
+                    color: theme === 'dark' ? 'white' : '#1a1a1a',
                     fontSize: '1.25rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
