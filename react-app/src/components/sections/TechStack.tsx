@@ -1,5 +1,34 @@
 import { motion } from 'framer-motion'
 
+const iconSlugs: Record<string, string> = {
+  'React': 'react',
+  'Next.js': 'nextdotjs',
+  'JavaScript': 'javascript',
+  'TypeScript': 'typescript',
+  'HTML5': 'html5',
+  'CSS3': 'css3',
+  'Tailwind CSS': 'tailwindcss',
+  'GSAP': 'greensock',
+  'Framer Motion': 'framer',
+  'Three.js': 'threedotjs',
+  'Node.js': 'nodedotjs',
+  'Java': 'openjdk',
+  'Spring Boot': 'springboot',
+  'Maven': 'apachemaven',
+  'REST APIs': '',
+  'MongoDB': 'mongodb',
+  'PostgreSQL': 'postgresql',
+  'Firebase': 'firebase',
+  'Supabase': 'supabase',
+  'AWS': 'amazonwebservices',
+  'OpenAI API': 'openai',
+  'LLM Integration': '',
+  'Automation Workflows': '',
+  'Figma': 'figma',
+  'Canva': 'canva',
+  'Adobe Creative Suite': 'adobe',
+}
+
 const groups = [
   {
     label: 'Frontend Experience',
@@ -32,6 +61,89 @@ const groupVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
 }
 
+function TechIcon({ name }: { name: string }) {
+  const slug = iconSlugs[name]
+  return (
+    <span
+      className="group relative flex flex-col items-center gap-1"
+      style={{ cursor: 'default' }}
+    >
+      <span
+        className="flex items-center justify-center"
+        style={{
+          width: '44px',
+          height: '44px',
+          borderRadius: '8px',
+          border: '1px solid var(--card-border)',
+          background: 'var(--card-bg)',
+          transition: 'border-color 0.25s ease, background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease',
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'
+          e.currentTarget.style.background = 'rgba(255,255,255,0.05)'
+          e.currentTarget.style.transform = 'translateY(-2px)'
+          e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = 'var(--card-border)'
+          e.currentTarget.style.background = 'var(--card-bg)'
+          e.currentTarget.style.transform = 'translateY(0px)'
+          e.currentTarget.style.boxShadow = 'none'
+        }}
+      >
+        {slug ? (
+          <img
+            src={`https://cdn.simpleicons.org/${slug}`}
+            alt={name}
+            loading="lazy"
+            style={{
+              width: '22px',
+              height: '22px',
+              objectFit: 'contain',
+              pointerEvents: 'none',
+              filter: 'brightness(0.85)',
+              transition: 'filter 0.25s ease',
+            }}
+            onError={(e) => {
+              (e.target as HTMLImageElement).style.display = 'none'
+            }}
+          />
+        ) : (
+          <span
+            style={{
+              fontSize: '0.65rem',
+              fontWeight: 400,
+              color: 'var(--text-secondary)',
+              lineHeight: 1.1,
+              textAlign: 'center' as const,
+              padding: '2px',
+            }}
+          >
+            {name}
+          </span>
+        )}
+      </span>
+      <span
+        className="opacity-0 group-hover:opacity-100"
+        style={{
+          fontSize: '0.55rem',
+          fontFamily: "'Montserrat', sans-serif",
+          letterSpacing: '0.06em',
+          textTransform: 'uppercase' as const,
+          color: 'var(--text-secondary)',
+          whiteSpace: 'nowrap' as const,
+          transition: 'opacity 0.2s ease',
+          position: 'absolute' as const,
+          top: 'calc(100% + 4px)',
+          pointerEvents: 'none' as const,
+        }}
+      >
+        {name}
+      </span>
+    </span>
+  )
+}
+
 export default function TechStack() {
   return (
     <motion.section
@@ -50,31 +162,25 @@ export default function TechStack() {
           className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
           style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+            fontSize: 'clamp(3.5rem, 12vw, 8rem)',
           }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          The Technology
-          <br />
-          Behind Mugen
+          Technology
         </motion.h1>
-        <motion.p
+        <p
           className="text-white/30 font-light text-left leading-relaxed"
           style={{
             fontSize: 'clamp(0.85rem, 1.2vw, 1.05rem)',
             maxWidth: '540px',
             marginTop: 'clamp(8px, 1.2vw, 16px)',
           }}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
         >
           The tools, frameworks, and systems we use to turn ideas into digital experiences.
-        </motion.p>
+        </p>
 
         <motion.div
           style={{
@@ -119,36 +225,9 @@ export default function TechStack() {
               >
                 {group.label}
               </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
                 {group.items.map((name) => (
-                  <span
-                    key={name}
-                    className="text-white/60"
-                    style={{
-                      fontFamily: "'Montserrat', sans-serif",
-                      fontSize: 'clamp(0.7rem, 0.85vw, 0.8rem)',
-                      fontWeight: 300,
-                      letterSpacing: '0.04em',
-                      border: '1px solid var(--card-border)',
-                      borderRadius: '4px',
-                      padding: '5px 14px',
-                      cursor: 'default',
-                      background: 'var(--card-bg)',
-                      transition: 'color 0.3s ease, border-color 0.3s ease, background 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = 'var(--text-primary)'
-                      e.currentTarget.style.borderColor = 'var(--border-color)'
-                      e.currentTarget.style.background = 'var(--card-bg)'
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = 'var(--text-secondary)'
-                      e.currentTarget.style.borderColor = 'var(--card-border)'
-                      e.currentTarget.style.background = 'var(--card-bg)'
-                    }}
-                  >
-                    {name}
-                  </span>
+                  <TechIcon key={name} name={name} />
                 ))}
               </div>
             </motion.div>
