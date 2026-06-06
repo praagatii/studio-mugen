@@ -121,6 +121,36 @@ export default function HomePage() {
         />
       </motion.section>
 
+      <ProjectGallery />
+
+      <SectionFadeIn id="portfolio">
+        <SectionOverlay />
+        <div
+          className="absolute z-2"
+          style={{
+            top: '15%',
+            left: '4%',
+            maxWidth: '75%',
+          }}
+        >
+          <h1
+            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+            style={{
+              fontFamily: "'Anton', sans-serif",
+              fontSize: 'clamp(3.5rem, 12vw, 8rem)',
+            }}
+          >
+            Portfolio
+          </h1>
+          <p
+            className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
+            style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
+          >
+            Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create work that feels timeless, atmospheric, and intentional.
+          </p>
+        </div>
+      </SectionFadeIn>
+
       <SectionFadeIn id="about">
         <img
           src={blackholeImg}
@@ -163,49 +193,13 @@ export default function HomePage() {
               fontSize: 'clamp(3.5rem, 12vw, 8rem)',
             }}
           >
-            WE BUILD DIGITAL PRODUCTS
+            BUILT WITHOUT LIMITS
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
           >
-            We turn ideas into digital products — from websites and applications to AI-powered experiences and custom software. Whether you need a polished web presence, a full-stack platform, or an intelligent tool, we take your vision from concept to launch.
-          </p>
-          <p
-            className="text-white/30 font-light text-left mt-6 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(0.85rem, 1.2vw, 1.05rem)' }}
-          >
-            Mugen exists at the intersection of art, technology, and atmosphere. Inspired by cinematic storytelling and modern digital culture, our work focuses on making brands and products feel unforgettable.
-          </p>
-        </div>
-      </SectionFadeIn>
-
-      <ProjectGallery />
-
-      <SectionFadeIn id="portfolio">
-        <SectionOverlay />
-        <div
-          className="absolute z-2"
-          style={{
-            top: '15%',
-            left: '4%',
-            maxWidth: '75%',
-          }}
-        >
-          <h1
-            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-            style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(3.5rem, 12vw, 8rem)',
-            }}
-          >
-            Portfolio
-          </h1>
-          <p
-            className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
-          >
-            Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create work that feels timeless, atmospheric, and intentional.
+            Mugen exists at the intersection of art, technology, and atmosphere — creating experiences that are visually striking, emotionally immersive, and built without limits.
           </p>
         </div>
       </SectionFadeIn>
