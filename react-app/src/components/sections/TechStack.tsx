@@ -71,13 +71,11 @@ export default function TechStack() {
       style={{
         position: 'relative',
         width: '100%',
-        minHeight: '80vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
-        gap: 'clamp(40px, 5vw, 64px)',
-        padding: 'clamp(80px, 12vw, 140px) 0',
+        gap: 'clamp(20px, 2.5vw, 32px)',
+        padding: 'clamp(40px, 6vw, 80px) 0',
         overflow: 'hidden',
       }}
     >
@@ -91,28 +89,20 @@ export default function TechStack() {
         }}
       />
 
-      <div style={{ position: 'relative', zIndex: 2, textAlign: 'center', padding: '0 4%' }}>
-        <h1
-          className="text-white uppercase leading-[0.95] tracking-[0.01em]"
-          style={{
-            fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(3.5rem, 12vw, 8rem)',
-          }}
-        >
-          Technology
-        </h1>
-        <p
-          className="text-white font-light mt-3 leading-relaxed"
-          style={{
-            fontSize: 'clamp(0.95rem, 2vw, 1.4rem)',
-            maxWidth: '560px',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-          }}
-        >
-          The tools, frameworks, and systems we use to turn ideas into digital experiences.
-        </p>
-      </div>
+      <p
+        className="text-white/30"
+        style={{
+          position: 'relative',
+          zIndex: 2,
+          fontFamily: "'Montserrat', sans-serif",
+          fontSize: 'clamp(0.55rem, 0.65vw, 0.65rem)',
+          letterSpacing: '0.18em',
+          textTransform: 'uppercase',
+          fontWeight: 400,
+        }}
+      >
+        Technologies Used
+      </p>
 
       <div
         style={{
@@ -121,7 +111,7 @@ export default function TechStack() {
           width: '100%',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'clamp(32px, 4vw, 48px)',
+          gap: 'clamp(12px, 1.5vw, 20px)',
         }}
       >
         <MarqueeRow slugs={row1} direction="right" duration={50} />

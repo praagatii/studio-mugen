@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
 
-const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Technology', 'Projects', 'Contact']
+const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Projects', 'Contact']
 
 function getHref(item: string) {
   if (item === 'Projects') return '/projects'
