@@ -32,7 +32,7 @@ html::-webkit-scrollbar {
   --nav-bg: transparent;
   --nav-blend: difference;
   --nav-color: #fff;
-  --section-bg: #000;
+  --section-bg: transparent;
   --section-overlay: rgba(0,0,0,0.5);
   --wa-bg: rgba(255,255,255,0.06);
   --wa-border: rgba(255,255,255,0.12);
