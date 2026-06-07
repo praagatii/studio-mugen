@@ -204,6 +204,7 @@ export default function HomePage() {
             Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
           </p>
         </div>
+        <TechStack />
       </SectionFadeIn>
 
       <SectionFadeIn id="about">
@@ -259,8 +260,6 @@ export default function HomePage() {
         </div>
       </SectionFadeIn>
 
-      <TechStack />
-
       <SectionFadeIn
         id="contact"
         style={{ background: 'var(--section-bg)' }}
@@ -280,14 +279,8 @@ export default function HomePage() {
               fontSize: 'clamp(3.5rem, 12vw, 8rem)',
             }}
           >
-            Contact
+            Have a project in mind?<br />Let&rsquo;s build something unforgettable.
           </h1>
-          <p
-            className="text-white/40 text-left mt-2 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(0.75rem, 1.1vw, 0.95rem)', fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.04em' }}
-          >
-            Have a project in mind? Let&rsquo;s build something unforgettable.
-          </p>
           <div
             className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
