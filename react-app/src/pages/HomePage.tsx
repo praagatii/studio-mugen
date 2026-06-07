@@ -150,7 +150,7 @@ export default function HomePage() {
             Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create work that feels timeless, atmospheric, and intentional.
           </p>
         </div>
-        <div className="absolute" style={{ top: '15%', right: '5%', zIndex: 3 }}>
+        <div className="absolute" style={{ top: '12%', right: '18%', zIndex: 3 }}>
           <Skiper53 />
         </div>
       </SectionFadeIn>
