@@ -1,5 +1,5 @@
-import { AnimatePresence, motion } from "framer-motion"
-import { useState, useCallback } from "react"
+import { motion } from "framer-motion"
+import { useState } from "react"
 import srirangaImg from "../../assets/sriranga.png"
 import resolveImg from "../../assets/resolvemockup.png"
 import bangloreImg from "../../assets/banglore.png"
@@ -17,68 +17,57 @@ const images = [
 ]
 
 export default function Skiper53({ className }: { className?: string }) {
-  const [activeImage, setActiveImage] = useState<number | null>(1)
-
-  const handleHover = useCallback(
-    (index: number) => {
-      if (activeImage !== index) setActiveImage(index)
-    },
-    [activeImage],
-  )
+  const [hovered, setHovered] = useState<number | null>(null)
 
   return (
     <div className={className}>
-      <div className="flex flex-col items-center justify-center gap-1.5">
-        {images.map((image, index) => (
-          <motion.div
-            key={index}
-            className="relative cursor-pointer overflow-hidden rounded-2xl"
-            style={{
-              width: "clamp(180px, 20vw, 320px)",
-              background: "#000",
-            }}
-            animate={{ height: activeImage === index ? "clamp(180px, 18vw, 300px)" : "2.5rem" }}
-            transition={{ duration: 0.35, ease: "easeInOut" }}
-            onClick={() => handleHover(index)}
-            onMouseEnter={() => handleHover(index)}
-            layout
-          >
-            <AnimatePresence mode="sync">
-              {activeImage === index && (
+      <div className="flex flex-col gap-1.5">
+        {images.map((image, index) => {
+          const isOpen = hovered === index
+
+          return (
+            <motion.div
+              key={index}
+              className="relative overflow-hidden rounded-2xl"
+              style={{
+                width: "clamp(180px, 20vw, 320px)",
+                background: "#000",
+              }}
+              animate={{ height: isOpen ? "clamp(180px, 18vw, 300px)" : "2.5rem" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              onMouseEnter={() => setHovered(index)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              {isOpen && (
                 <motion.div
-                  key="gradient"
+                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+                  style={{ zIndex: 1 }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
-                  style={{ zIndex: 1 }}
+                  transition={{ duration: 0.15 }}
                 />
               )}
-            </AnimatePresence>
-            <AnimatePresence mode="sync">
-              {activeImage === index && (
+              {isOpen && (
                 <motion.div
-                  key="label"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
-                  transition={{ duration: 0.2 }}
                   className="absolute bottom-0 right-0 px-3 pb-3"
                   style={{ zIndex: 2 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.15 }}
                 >
                   <p className="text-xs text-white/40">{image.code}</p>
                 </motion.div>
               )}
-            </AnimatePresence>
-            <img
-              src={image.src}
-              className="size-full object-cover"
-              alt={image.alt}
-              draggable={false}
-            />
-          </motion.div>
-        ))}
+              <img
+                src={image.src}
+                className="size-full object-cover"
+                alt={image.alt}
+                draggable={false}
+              />
+            </motion.div>
+          )
+        })}
       </div>
     </div>
   )
