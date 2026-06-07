@@ -120,9 +120,63 @@ export default function HomePage() {
             filter: 'drop-shadow(0 0 24px rgba(255,255,255,0.04))',
           }}
         />
+        <p
+          className="absolute text-white/30 uppercase tracking-[0.3em]"
+          style={{
+            bottom: '12%',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)',
+            letterSpacing: '0.4em',
+          }}
+        >
+          Branding {'\u2022'} Web Design {'\u2022'} Creative Direction {'\u2022'} Digital Experiences
+        </p>
       </motion.section>
 
       <ProjectGallery />
+
+      <SectionFadeIn id="services">
+        <SectionOverlay />
+        <div
+          className="absolute z-2"
+          style={{
+            top: '12%',
+            left: '4%',
+            maxWidth: '75%',
+          }}
+        >
+          <h1
+            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+            style={{
+              fontFamily: "'Anton', sans-serif",
+              fontSize: 'clamp(3.5rem, 12vw, 8rem)',
+            }}
+          >
+            SERVICES
+          </h1>
+        </div>
+        <div
+          className="absolute z-2 flex flex-wrap gap-x-12 gap-y-4"
+          style={{
+            top: '45%',
+            left: '4%',
+            maxWidth: '80%',
+          }}
+        >
+          {[
+            'Branding',
+            'Web Design',
+            'Website Development',
+            'UI/UX Design',
+            'Creative Direction',
+            'Digital Experiences',
+          ].map((s) => (
+            <div key={s} className="text-white/70" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(0.9rem, 1.4vw, 1.15rem)', letterSpacing: '0.06em', padding: '0.35rem 1.2rem', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '2rem' }}>
+              {s}
+            </div>
+          ))}
+        </div>
+      </SectionFadeIn>
 
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
@@ -141,13 +195,13 @@ export default function HomePage() {
               fontSize: 'clamp(3.5rem, 12vw, 8rem)',
             }}
           >
-            Portfolio
+            DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
           >
-            Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create work that feels timeless, atmospheric, and intentional.
+            Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
           </p>
         </div>
       </SectionFadeIn>
@@ -200,7 +254,7 @@ export default function HomePage() {
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
           >
-            Mugen exists at the intersection of art, technology, and atmosphere — creating experiences that are visually striking, emotionally immersive, and built without limits.
+            We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Every project is crafted to strengthen presence, build trust, and create lasting impact.
           </p>
         </div>
       </SectionFadeIn>
@@ -228,8 +282,14 @@ export default function HomePage() {
           >
             Contact
           </h1>
+          <p
+            className="text-white/40 text-left mt-2 max-w-[560px] leading-relaxed"
+            style={{ fontSize: 'clamp(0.75rem, 1.1vw, 0.95rem)', fontFamily: "'Montserrat', sans-serif", letterSpacing: '0.04em' }}
+          >
+            Have a project in mind? Let&rsquo;s build something unforgettable.
+          </p>
           <div
-            className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
+            className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
             style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
           >
             <p>developer.mugen@gmail.com</p>
