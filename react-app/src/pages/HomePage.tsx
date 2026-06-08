@@ -252,14 +252,14 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                fontSize: 'clamp(6rem, 10vw, 7.5rem)',
               }}
             >
               DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
             </h1>
             <p
               className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-              style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
+              style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
             >
               Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
             </p>
@@ -303,25 +303,25 @@ export default function HomePage() {
             maxWidth: '75%',
           }}
         >
-          <h1
-            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-            style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-            }}
-          >
-            <DecryptedText
-              text="BUILT WITHOUT LIMITS"
-              {...DT_CONFIG}
-              parentClassName="block"
-            />
-          </h1>
-          <p
-            className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
-          >
-            We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Every project is crafted to strengthen presence, build trust, and create lasting impact.
-          </p>
+            <h1
+              className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+              style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: 'clamp(6rem, 10vw, 7.5rem)',
+              }}
+            >
+              <DecryptedText
+                text="BUILT WITHOUT LIMITS"
+                {...DT_CONFIG}
+                parentClassName="block"
+              />
+            </h1>
+            <p
+              className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
+              style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
+            >
+              We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Every project is crafted to strengthen presence, build trust, and create lasting impact.
+            </p>
         </div>
       </SectionFadeIn>
 
@@ -350,14 +350,14 @@ export default function HomePage() {
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+                  fontSize: 'clamp(6rem, 10vw, 7.5rem)',
                 }}
               >
                 Have a project in mind?<br />Let&rsquo;s build something unforgettable.
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
-                style={{ fontSize: 'clamp(0.95rem, 2vw, 1.4rem)' }}
+                style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
               >
                 <p>developer.mugen@gmail.com</p>
                 <p className="mt-2">
