@@ -79,10 +79,14 @@ export default function Services() {
         className="text-white uppercase leading-[0.95] tracking-[0.01em]"
         style={{
           fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(6rem, 10vw, 7.5rem)',
+          fontSize: 'clamp(5rem, 9vw, 6.5rem)',
         }}
       >
-        Services
+        <DecryptedText
+          text="Services"
+          {...{ speed: 60, maxIterations: 12, sequential: true, revealDirection: 'start', animateOn: 'view' }}
+          parentClassName="block"
+        />
       </h2>
 
       <div
