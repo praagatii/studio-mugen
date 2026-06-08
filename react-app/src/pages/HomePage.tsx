@@ -348,14 +348,14 @@ export default function HomePage() {
         >
           <div
             style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 380px), 1fr))',
+              display: 'flex',
               gap: 'clamp(32px, 5vw, 64px)',
-              alignItems: 'start',
+              alignItems: 'flex-start',
               width: '100%',
+              flexWrap: 'wrap',
             }}
           >
-            <div>
+            <div style={{ flex: '1 1 300px' }}>
               <h1
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
