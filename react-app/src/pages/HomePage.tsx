@@ -244,7 +244,7 @@ export default function HomePage() {
           style={{
             padding: 'clamp(80px, 10vh, 120px) clamp(20px, 4vw, 48px)',
             minHeight: '100vh',
-            gap: 'clamp(40px, 6vw, 80px)',
+            gap: 'clamp(24px, 4vw, 48px)',
           }}
         >
           <div style={{ maxWidth: '75%' }}>
