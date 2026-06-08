@@ -65,15 +65,15 @@ export default function Services() {
         className="text-white/30 uppercase tracking-[0.2em] block mb-2"
         style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(0.7rem, 1vw, 0.85rem)' }}
       >
-        <DecryptedText
-          text="What We Do"
-          animateOn="view"
-          speed={35}
-          maxIterations={8}
-          sequential={true}
-          revealDirection="start"
-          parentClassName=""
-        />
+            <DecryptedText
+              text="What We Do"
+              animateOn="view"
+              speed={60}
+              maxIterations={12}
+              sequential={true}
+              revealDirection="start"
+              parentClassName=""
+            />
       </span>
       <h2
         className="text-white uppercase leading-[0.95] tracking-[0.01em]"
