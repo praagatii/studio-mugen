@@ -252,11 +252,17 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
               }}
             >
               <DecryptedText
-                text="DESIGNING EXPERIENCES\nPEOPLE REMEMBER"
+                text="DESIGNING EXPERIENCES"
+                {...DT_CONFIG}
+                parentClassName="block"
+              />
+              <br />
+              <DecryptedText
+                text="PEOPLE REMEMBER"
                 {...DT_CONFIG}
                 parentClassName="block"
               />
@@ -311,7 +317,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
               }}
             >
               <DecryptedText
@@ -345,7 +351,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
               }}
             >
               <DecryptedText

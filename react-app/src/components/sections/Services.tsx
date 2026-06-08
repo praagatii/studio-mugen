@@ -79,7 +79,7 @@ export default function Services() {
         className="text-white uppercase leading-[0.95] tracking-[0.01em]"
         style={{
           fontFamily: "'Anton', sans-serif",
-          fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+          fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
         }}
       >
         <DecryptedText
