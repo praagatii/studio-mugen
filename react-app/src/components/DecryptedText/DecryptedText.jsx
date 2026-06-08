@@ -56,7 +56,7 @@ export default function DecryptedText({
       return originalText
         .split('')
         .map((char, i) => {
-          if (char === ' ') return ' ';
+          if (char === ' ' || char === '\n') return char;
           if (currentRevealed.has(i)) return originalText[i];
           return availableChars[Math.floor(Math.random() * availableChars.length)];
         })

@@ -252,7 +252,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                fontSize: 'clamp(4rem, 8vw, 5.5rem)',
               }}
             >
               <DecryptedText
@@ -311,7 +311,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                fontSize: 'clamp(4rem, 8vw, 5.5rem)',
               }}
             >
               <DecryptedText
@@ -341,8 +341,7 @@ export default function HomePage() {
         >
           <div
             style={{
-              width: 'min(100%, 1100px)',
-              margin: '0 auto',
+              width: '100%',
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
               gap: 'clamp(32px, 5vw, 64px)',
@@ -354,7 +353,7 @@ export default function HomePage() {
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+                  fontSize: 'clamp(4rem, 8vw, 5.5rem)',
                 }}
               >
                 <DecryptedText
