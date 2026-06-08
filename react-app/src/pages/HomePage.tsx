@@ -69,16 +69,16 @@ const DT_CONFIG = {
 }
 
 function InquiryForm() {
-  const [form, setForm] = useState({ company: '', name: '', email: '', phone: '', projectType: '', message: '' })
+  const [form, setForm] = useState({ company: '', name: '', email: '', phone: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }, [])
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault()
-    const lead: Lead = { ...form, createdAt: new Date().toISOString() }
+    const lead: Lead = { ...form, projectType: '', createdAt: new Date().toISOString() }
     saveLead(lead)
     setSubmitted(true)
   }, [form])
@@ -87,10 +87,10 @@ function InquiryForm() {
     width: '100%',
     background: 'rgba(255,255,255,0.04)',
     border: '1px solid rgba(255,255,255,0.1)',
-    borderRadius: '8px',
-    padding: '10px 14px',
+    borderRadius: '6px',
+    padding: '8px 12px',
     color: '#fff',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     fontFamily: "'Montserrat', sans-serif",
     fontWeight: 300,
     outline: 'none',
@@ -99,18 +99,12 @@ function InquiryForm() {
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
     textTransform: 'uppercase',
     letterSpacing: '0.1em',
     color: 'rgba(255,255,255,0.4)',
-    marginBottom: '6px',
+    marginBottom: '4px',
     fontFamily: "'Montserrat', sans-serif",
-  }
-
-  const selectStyle: React.CSSProperties = {
-    ...inputStyle,
-    appearance: 'none',
-    cursor: 'pointer',
   }
 
   if (submitted) {
@@ -119,22 +113,22 @@ function InquiryForm() {
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '16px',
-          padding: 'clamp(24px, 3vw, 36px)',
+          gap: '12px',
+          padding: 'clamp(16px, 2vw, 24px)',
           background: 'rgba(255,255,255,0.02)',
           border: '1px solid rgba(255,255,255,0.08)',
-          borderRadius: '16px',
+          borderRadius: '12px',
           textAlign: 'center',
         }}
       >
-        <p className="text-white font-light" style={{ fontSize: '1.1rem', fontFamily: "'Montserrat', sans-serif" }}>Thank you for reaching out.</p>
-        <p className="text-white/50 font-light" style={{ fontSize: '0.9rem', fontFamily: "'Montserrat', sans-serif" }}>We&apos;ll get back to you shortly.</p>
+        <p className="text-white font-light" style={{ fontSize: '1rem', fontFamily: "'Montserrat', sans-serif" }}>Thank you for reaching out.</p>
+        <p className="text-white/50 font-light" style={{ fontSize: '0.85rem', fontFamily: "'Montserrat', sans-serif" }}>We&apos;ll get back to you shortly.</p>
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: 'clamp(24px, 3vw, 36px)', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: 'clamp(16px, 2vw, 24px)', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px' }}>
       <div>
         <label style={labelStyle}>Company Name</label>
         <input name="company" value={form.company} onChange={handleChange} placeholder="Company name" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
@@ -152,21 +146,10 @@ function InquiryForm() {
         <input name="phone" value={form.phone} onChange={handleChange} placeholder="+1 234 567 890" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
       </div>
       <div>
-        <label style={labelStyle}>Project Type</label>
-        <select name="projectType" value={form.projectType} onChange={handleChange} style={selectStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }}>
-          <option value="" style={{ background: '#000', color: '#fff' }}>Select...</option>
-          <option value="web-development" style={{ background: '#000', color: '#fff' }}>Web Development</option>
-          <option value="ui-ux-design" style={{ background: '#000', color: '#fff' }}>UI/UX Design</option>
-          <option value="brand-identity" style={{ background: '#000', color: '#fff' }}>Brand Identity</option>
-          <option value="motion-design" style={{ background: '#000', color: '#fff' }}>Motion Design</option>
-          <option value="other" style={{ background: '#000', color: '#fff' }}>Other</option>
-        </select>
-      </div>
-      <div>
         <label style={labelStyle}>Message *</label>
-        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Tell us about your project..." rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: '80px' }} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Tell us about your project..." rows={3} style={{ ...inputStyle, resize: 'vertical', minHeight: '60px' }} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
       </div>
-      <button type="submit" style={{ marginTop: '4px', padding: '12px 24px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', color: '#fff', fontSize: '0.8rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}
+      <button type="submit" style={{ marginTop: '2px', padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', color: '#fff', fontSize: '0.75rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}
         onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
         onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}>
         Send Inquiry
@@ -257,30 +240,31 @@ export default function HomePage() {
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
         <div
-          className="absolute z-2"
+          className="relative z-2 w-full h-full flex flex-col"
           style={{
-            top: '15%',
-            left: '4%',
-            maxWidth: '75%',
+            padding: 'clamp(80px, 10vh, 120px) clamp(20px, 4vw, 48px)',
+            minHeight: '100vh',
           }}
         >
-          <h1
-            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-            style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(2rem, 6vw, 3.5rem)',
-            }}
-          >
-            DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
-          </h1>
-          <p
-            className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
-          >
-            Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
-          </p>
+          <div style={{ maxWidth: '75%' }}>
+            <h1
+              className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+              style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+              }}
+            >
+              DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
+            </h1>
+            <p
+              className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
+              style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
+            >
+              Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
+            </p>
+          </div>
+          <TechStack />
         </div>
-        <TechStack />
       </SectionFadeIn>
 
       <SectionFadeIn id="about">
