@@ -77,7 +77,7 @@ export default function Services() {
             text="What We Do"
             animateOn="view"
             speed={35}
-            maxIterations={12}
+            maxIterations={8}
             sequential={true}
             revealDirection="start"
             parentClassName=""
@@ -87,28 +87,21 @@ export default function Services() {
           className="text-white uppercase leading-[0.95] tracking-[0.01em] text-center"
           style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(2.5rem, 8vw, 5rem)',
+            fontSize: 'clamp(2rem, 6vw, 3.5rem)',
           }}
         >
-          <DecryptedText
-            text="Services"
-            animateOn="view"
-            speed={35}
-            maxIterations={12}
-            sequential={true}
-            revealDirection="start"
-            parentClassName="block"
-          />
+          Services
         </h2>
 
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
-            gap: 'clamp(16px, 2vw, 24px)',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: 'clamp(10px, 1.2vw, 16px)',
             width: '100%',
-            marginTop: 'clamp(32px, 5vw, 48px)',
+            marginTop: 'clamp(24px, 3vw, 36px)',
           }}
+          className="services-grid"
         >
           {SERVICES.map((service) => (
             <BorderGlow
@@ -126,10 +119,10 @@ export default function Services() {
             >
               <div
                 style={{
-                  padding: 'clamp(24px, 3vw, 36px)',
+                  padding: 'clamp(16px, 2vw, 24px)',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '12px',
+                  gap: '8px',
                 }}
               >
                 <ServiceIcon icon={service.icon} />
@@ -137,46 +130,42 @@ export default function Services() {
                   className="text-white uppercase tracking-wider"
                   style={{
                     fontFamily: "'Anton', sans-serif",
-                    fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)',
+                    fontSize: 'clamp(0.85rem, 1.2vw, 1rem)',
                     letterSpacing: '0.04em',
                   }}
                 >
-                  <DecryptedText
-                    text={service.title}
-                    animateOn="view"
-                    speed={35}
-                    maxIterations={12}
-                    sequential={true}
-                    revealDirection="start"
-                    parentClassName="block"
-                  />
+                  {service.title}
                 </h3>
-                <p
-                  className="text-white/60 font-light leading-relaxed"
-                  style={{
-                    fontSize: 'clamp(0.85rem, 1.2vw, 0.95rem)',
-                  }}
-                >
-                  {service.description}
-                </p>
               </div>
             </BorderGlow>
           ))}
         </div>
 
         <div
-          className="text-white/50 font-light text-left leading-relaxed"
+          className="text-white/50 font-light text-center leading-relaxed"
           style={{
-            fontSize: 'clamp(0.95rem, 1.8vw, 1.15rem)',
-            maxWidth: '680px',
-            marginTop: 'clamp(36px, 5vw, 56px)',
-            textAlign: 'center',
-            lineHeight: '1.8',
+            fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
+            maxWidth: '600px',
+            marginTop: 'clamp(28px, 4vw, 40px)',
+            lineHeight: '1.7',
           }}
         >
-          Every project begins with a conversation. Whether you need a complete digital experience or a refined visual identity, we work closely with you to bring your vision to life — blending craft, technology, and intent into something that lasts.
+          From interfaces to intelligent systems, we craft digital experiences where design, technology, and imagination move as one.
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .services-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        }
+        @media (max-width: 767px) {
+          .services-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+      `}</style>
     </section>
   )
 }

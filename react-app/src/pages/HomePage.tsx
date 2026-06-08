@@ -62,7 +62,7 @@ function SectionFadeIn({
 
 const DT_CONFIG = {
   speed: 35,
-  maxIterations: 12,
+  maxIterations: 8,
   sequential: true,
   revealDirection: 'start' as const,
   animateOn: 'view' as const,
@@ -268,14 +268,10 @@ export default function HomePage() {
             className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
+              fontSize: 'clamp(2rem, 6vw, 3.5rem)',
             }}
           >
-            <DecryptedText
-              text="DESIGNING EXPERIENCES PEOPLE REMEMBER"
-              {...DT_CONFIG}
-              parentClassName="block"
-            />
+            DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
@@ -326,7 +322,7 @@ export default function HomePage() {
             className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
+              fontSize: 'clamp(2rem, 6vw, 3.5rem)',
             }}
           >
             <DecryptedText
@@ -369,14 +365,10 @@ export default function HomePage() {
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
+                  fontSize: 'clamp(2rem, 6vw, 3.5rem)',
                 }}
               >
-                <DecryptedText
-                  text="HAVE A PROJECT IN MIND? LET'S BUILD SOMETHING UNFORGETTABLE."
-                  {...DT_CONFIG}
-                  parentClassName="block"
-                />
+                Have a project in mind?<br />Let&rsquo;s build something unforgettable.
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
