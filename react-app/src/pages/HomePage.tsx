@@ -252,7 +252,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(4rem, 8vw, 5.5rem)',
+                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
               }}
             >
               <DecryptedText
@@ -311,7 +311,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(4rem, 8vw, 5.5rem)',
+                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
               }}
             >
               <DecryptedText
@@ -334,69 +334,59 @@ export default function HomePage() {
         style={{ background: 'var(--section-bg)' }}
       >
         <div
-          className="relative z-2 w-full h-full flex flex-col justify-center"
+          className="relative z-2 w-full h-full flex flex-col"
           style={{
             padding: 'clamp(60px, 8vw, 120px) clamp(20px, 4vw, 48px)',
+            minHeight: '100vh',
           }}
         >
-          <div
-            style={{
-              width: '100%',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-              gap: 'clamp(32px, 5vw, 64px)',
-              alignItems: 'start',
-            }}
-          >
-            <div>
-              <h1
-                className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-                style={{
-                  fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(4rem, 8vw, 5.5rem)',
-                }}
-              >
-                <DecryptedText
-                  text="Contact"
-                  {...DT_CONFIG}
-                  parentClassName="block"
-                />
-              </h1>
-              <div
-                className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
-                style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
-              >
-                <p>developer.mugen@gmail.com</p>
-                <p className="mt-2">
-                  <a
-                    href="https://www.instagram.com/madeby.mugen"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    madeby.mugen
-                  </a>
-                </p>
-                <p className="mt-4">
-                  <a
-                    href="https://wa.me/918050056552"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
-                    style={{ textDecoration: 'none' }}
-                  >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wa-icon)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" style={{ transition: 'stroke 0.4s ease' }}>
-                      <path d="M12 2C6.477 2 2 6.477 2 12c0 2.136.663 4.116 1.794 5.745L2.5 21.5l3.755-1.294A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
-                      <path d="M16.5 14.6c-.3.9-1.1 1.5-1.9 1.7a4.5 4.5 0 01-4.2-.8 11.5 11.5 0 01-3.2-3.8 4.5 4.5 0 01.7-4.5c.3-.3.7-.5 1.1-.5.2 0 .4.1.5.3l.9 1.2c.1.2.2.4.1.6-.1.2-.2.3-.3.5-.2.2-.3.4-.2.6.2.5.5 1 .9 1.4.4.4.9.7 1.4.9.2.1.4 0 .6-.2.1-.1.3-.3.5-.5.2-.2.5-.3.7-.2l1.4.8c.2.1.3.3.3.5.1.2 0 .5-.2.7z" />
-                    </svg>
-                    <span className="text-sm tracking-wider uppercase">WhatsApp</span>
-                  </a>
-                </p>
-              </div>
+          <div style={{ maxWidth: '75%' }}>
+            <h1
+              className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+              style={{
+                fontFamily: "'Anton', sans-serif",
+                fontSize: 'clamp(5rem, 9vw, 6.5rem)',
+              }}
+            >
+              <DecryptedText
+                text="Contact"
+                {...DT_CONFIG}
+                parentClassName="block"
+              />
+            </h1>
+            <div
+              className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
+              style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
+            >
+              <p>developer.mugen@gmail.com</p>
+              <p className="mt-2">
+                <a
+                  href="https://www.instagram.com/madeby.mugen"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline"
+                >
+                  madeby.mugen
+                </a>
+              </p>
+              <p className="mt-4">
+                <a
+                  href="https://wa.me/918050056552"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 hover:opacity-70 transition-opacity"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--wa-icon)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" xmlns="http://www.w3.org/2000/svg" style={{ transition: 'stroke 0.4s ease' }}>
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 2.136.663 4.116 1.794 5.745L2.5 21.5l3.755-1.294A9.956 9.956 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z" />
+                    <path d="M16.5 14.6c-.3.9-1.1 1.5-1.9 1.7a4.5 4.5 0 01-4.2-.8 11.5 11.5 0 01-3.2-3.8 4.5 4.5 0 01.7-4.5c.3-.3.7-.5 1.1-.5.2 0 .4.1.5.3l.9 1.2c.1.2.2.4.1.6-.1.2-.2.3-.3.5-.2.2-.3.4-.2.6.2.5.5 1 .9 1.4.4.4.9.7 1.4.9.2.1.4 0 .6-.2.1-.1.3-.3.5-.5.2-.2.5-.3.7-.2l1.4.8c.2.1.3.3.3.5.1.2 0 .5-.2.7z" />
+                  </svg>
+                  <span className="text-sm tracking-wider uppercase">WhatsApp</span>
+                </a>
+              </p>
             </div>
-
-            <InquiryForm />
           </div>
+          <InquiryForm />
         </div>
         <p
           className="absolute bottom-8 left-[4%] text-white/40 text-xs uppercase tracking-wider"
