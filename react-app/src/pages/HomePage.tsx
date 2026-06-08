@@ -353,7 +353,7 @@ export default function HomePage() {
                   fontSize: 'clamp(6rem, 10vw, 7.5rem)',
                 }}
               >
-                Have a project in mind?<br />Let&rsquo;s build something unforgettable.
+                Contact
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
