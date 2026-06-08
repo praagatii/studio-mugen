@@ -268,7 +268,7 @@ export default function HomePage() {
             className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(4rem, 14vw, 10rem)',
+              fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
             }}
           >
             <DecryptedText
@@ -279,7 +279,7 @@ export default function HomePage() {
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(1.05rem, 2.2vw, 1.5rem)' }}
+            style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
           >
             Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
           </p>
@@ -326,7 +326,7 @@ export default function HomePage() {
             className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
             style={{
               fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(4rem, 14vw, 10rem)',
+              fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
             }}
           >
             <DecryptedText
@@ -337,7 +337,7 @@ export default function HomePage() {
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
-            style={{ fontSize: 'clamp(1.05rem, 2.2vw, 1.5rem)' }}
+            style={{ fontSize: 'clamp(0.9rem, 1.6vw, 1.1rem)' }}
           >
             We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Every project is crafted to strengthen presence, build trust, and create lasting impact.
           </p>
@@ -369,7 +369,7 @@ export default function HomePage() {
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(4rem, 14vw, 10rem)',
+                  fontSize: 'clamp(2.8rem, 9vw, 5.5rem)',
                 }}
               >
                 <DecryptedText
