@@ -66,7 +66,7 @@ export default function Services() {
           width: 'min(100%, 900px)',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
+          alignItems: 'flex-start',
         }}
       >
         <span
@@ -84,14 +84,26 @@ export default function Services() {
           />
         </span>
         <h2
-          className="text-white uppercase leading-[0.95] tracking-[0.01em] text-center"
+          className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
           style={{
             fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(2rem, 6vw, 3.5rem)',
+            fontSize: 'clamp(4rem, 8vw, 5.5rem)',
           }}
         >
           Services
         </h2>
+
+        <div
+          className="text-white/50 font-light text-left leading-relaxed"
+          style={{
+            fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
+            maxWidth: '600px',
+            marginTop: 'clamp(12px, 1.5vw, 16px)',
+            lineHeight: '1.7',
+          }}
+        >
+          From interfaces to intelligent systems, we craft digital experiences where design, technology, and imagination move as one.
+        </div>
 
         <div
           style={{
@@ -139,18 +151,6 @@ export default function Services() {
               </div>
             </BorderGlow>
           ))}
-        </div>
-
-        <div
-          className="text-white/50 font-light text-center leading-relaxed"
-          style={{
-            fontSize: 'clamp(0.85rem, 1.4vw, 1rem)',
-            maxWidth: '600px',
-            marginTop: 'clamp(28px, 4vw, 40px)',
-            lineHeight: '1.7',
-          }}
-        >
-          From interfaces to intelligent systems, we craft digital experiences where design, technology, and imagination move as one.
         </div>
       </div>
 
