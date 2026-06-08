@@ -1,5 +1,6 @@
 import { SERVICES } from '../../data/services'
-import BorderGlow from '../ui/BorderGlow'
+import BorderGlow from '../BorderGlow/BorderGlow'
+import DecryptedText from '../DecryptedText/DecryptedText'
 
 function ServiceIcon({ icon }: { icon: string }) {
   const paths: Record<string, JSX.Element> = {
@@ -72,7 +73,15 @@ export default function Services() {
           className="text-white/30 text-[10px] uppercase tracking-[0.2em] block mb-2"
           style={{ fontFamily: "'Montserrat', sans-serif" }}
         >
-          What We Do
+          <DecryptedText
+            text="What We Do"
+            animateOn="view"
+            speed={35}
+            maxIterations={12}
+            sequential={true}
+            revealDirection="start"
+            parentClassName=""
+          />
         </span>
         <h2
           className="text-white uppercase leading-[0.95] tracking-[0.01em] text-center"
@@ -81,7 +90,15 @@ export default function Services() {
             fontSize: 'clamp(2.5rem, 8vw, 5rem)',
           }}
         >
-          Services
+          <DecryptedText
+            text="Services"
+            animateOn="view"
+            speed={35}
+            maxIterations={12}
+            sequential={true}
+            revealDirection="start"
+            parentClassName="block"
+          />
         </h2>
 
         <div
@@ -98,11 +115,14 @@ export default function Services() {
               key={service.title}
               className="service-card"
               backgroundColor="rgba(18, 15, 23, 0.6)"
-              borderRadius={20}
+              glowColor="0 0 100"
+              glowIntensity={0.4}
               glowRadius={30}
+              borderRadius={20}
               coneSpread={30}
-              colors={['#c084fc', '#f472b6', '#38bdf8']}
-              fillOpacity={0.3}
+              animated={true}
+              colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
+              fillOpacity={0.2}
             >
               <div
                 style={{
@@ -121,7 +141,15 @@ export default function Services() {
                     letterSpacing: '0.04em',
                   }}
                 >
-                  {service.title}
+                  <DecryptedText
+                    text={service.title}
+                    animateOn="view"
+                    speed={35}
+                    maxIterations={12}
+                    sequential={true}
+                    revealDirection="start"
+                    parentClassName="block"
+                  />
                 </h3>
                 <p
                   className="text-white/60 font-light leading-relaxed"

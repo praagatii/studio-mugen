@@ -1,15 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import Navbar from '../components/nav/Navbar'
 import ProjectGallery from '../components/sections/ProjectGallery'
-
 import TechStack from '../components/sections/TechStack'
 import Services from '../components/sections/Services'
 import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
-import DecryptedText from '../components/ui/DecryptedText'
-import InquiryForm from '../components/ui/InquiryForm'
+import DecryptedText from '../components/DecryptedText/DecryptedText'
+import { saveLead, type Lead } from '../data/saveLead'
 import mugenLogo from '../assets/mugen.png'
 import blackholeImg from '../assets/blackhole.png'
 
@@ -58,6 +57,121 @@ function SectionFadeIn({
     >
       {children}
     </motion.section>
+  )
+}
+
+const DT_CONFIG = {
+  speed: 35,
+  maxIterations: 12,
+  sequential: true,
+  revealDirection: 'start' as const,
+  animateOn: 'view' as const,
+}
+
+function InquiryForm() {
+  const [form, setForm] = useState({ company: '', name: '', email: '', phone: '', projectType: '', message: '' })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
+  }, [])
+
+  const handleSubmit = useCallback((e: React.FormEvent) => {
+    e.preventDefault()
+    const lead: Lead = { ...form, createdAt: new Date().toISOString() }
+    saveLead(lead)
+    setSubmitted(true)
+  }, [form])
+
+  const inputStyle: React.CSSProperties = {
+    width: '100%',
+    background: 'rgba(255,255,255,0.04)',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: '8px',
+    padding: '10px 14px',
+    color: '#fff',
+    fontSize: '0.9rem',
+    fontFamily: "'Montserrat', sans-serif",
+    fontWeight: 300,
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+  }
+
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    fontSize: '0.75rem',
+    textTransform: 'uppercase',
+    letterSpacing: '0.1em',
+    color: 'rgba(255,255,255,0.4)',
+    marginBottom: '6px',
+    fontFamily: "'Montserrat', sans-serif",
+  }
+
+  const selectStyle: React.CSSProperties = {
+    ...inputStyle,
+    appearance: 'none',
+    cursor: 'pointer',
+  }
+
+  if (submitted) {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '16px',
+          padding: 'clamp(24px, 3vw, 36px)',
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '16px',
+          textAlign: 'center',
+        }}
+      >
+        <p className="text-white font-light" style={{ fontSize: '1.1rem', fontFamily: "'Montserrat', sans-serif" }}>Thank you for reaching out.</p>
+        <p className="text-white/50 font-light" style={{ fontSize: '0.9rem', fontFamily: "'Montserrat', sans-serif" }}>We&apos;ll get back to you shortly.</p>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: 'clamp(24px, 3vw, 36px)', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '16px' }}>
+      <div>
+        <label style={labelStyle}>Company Name</label>
+        <input name="company" value={form.company} onChange={handleChange} placeholder="Company name" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Name *</label>
+        <input name="name" value={form.name} onChange={handleChange} required placeholder="Your name" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Email *</label>
+        <input name="email" type="email" value={form.email} onChange={handleChange} required placeholder="your@email.com" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Phone / WhatsApp</label>
+        <input name="phone" value={form.phone} onChange={handleChange} placeholder="+1 234 567 890" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+      </div>
+      <div>
+        <label style={labelStyle}>Project Type</label>
+        <select name="projectType" value={form.projectType} onChange={handleChange} style={selectStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }}>
+          <option value="" style={{ background: '#000', color: '#fff' }}>Select...</option>
+          <option value="web-development" style={{ background: '#000', color: '#fff' }}>Web Development</option>
+          <option value="ui-ux-design" style={{ background: '#000', color: '#fff' }}>UI/UX Design</option>
+          <option value="brand-identity" style={{ background: '#000', color: '#fff' }}>Brand Identity</option>
+          <option value="motion-design" style={{ background: '#000', color: '#fff' }}>Motion Design</option>
+          <option value="other" style={{ background: '#000', color: '#fff' }}>Other</option>
+        </select>
+      </div>
+      <div>
+        <label style={labelStyle}>Message *</label>
+        <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Tell us about your project..." rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: '80px' }} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
+      </div>
+      <button type="submit" style={{ marginTop: '4px', padding: '12px 24px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '8px', color: '#fff', fontSize: '0.8rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}
+        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}>
+        Send Inquiry
+      </button>
+    </form>
   )
 }
 
@@ -157,7 +271,11 @@ export default function HomePage() {
               fontSize: 'clamp(4rem, 14vw, 10rem)',
             }}
           >
-            DESIGNING EXPERIENCES<br />PEOPLE REMEMBER
+            <DecryptedText
+              text="DESIGNING EXPERIENCES PEOPLE REMEMBER"
+              {...DT_CONFIG}
+              parentClassName="block"
+            />
           </h1>
           <p
             className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
@@ -206,24 +324,15 @@ export default function HomePage() {
         >
           <h1
             className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-          style={{
-            fontFamily: "'Anton', sans-serif",
-            fontSize: 'clamp(4rem, 14vw, 10rem)',
-          }}
-        >
+            style={{
+              fontFamily: "'Anton', sans-serif",
+              fontSize: 'clamp(4rem, 14vw, 10rem)',
+            }}
+          >
             <DecryptedText
               text="BUILT WITHOUT LIMITS"
-              animateOn="view"
-              speed={80}
-              maxIterations={8}
-              sequential
-              revealDirection="start"
-              className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
+              {...DT_CONFIG}
               parentClassName="block"
-              style={{
-                fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(4rem, 14vw, 10rem)',
-              }}
             />
           </h1>
           <p
@@ -263,7 +372,11 @@ export default function HomePage() {
                   fontSize: 'clamp(4rem, 14vw, 10rem)',
                 }}
               >
-                Have a project in mind?<br />Let&rsquo;s build something unforgettable.
+                <DecryptedText
+                  text="HAVE A PROJECT IN MIND? LET'S BUILD SOMETHING UNFORGETTABLE."
+                  {...DT_CONFIG}
+                  parentClassName="block"
+                />
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"

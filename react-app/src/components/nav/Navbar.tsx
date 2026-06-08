@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
+import DecryptedText from '../DecryptedText/DecryptedText'
 import mugenLogo from '../../assets/mugen-logo.png'
 
 const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Projects', 'Contact']
@@ -122,7 +123,16 @@ export default function Navbar() {
                 onMouseEnter={(e) => { e.currentTarget.style.opacity = '1' }}
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = active ? '1' : '0.6' }}
               >
-                {item === 'Work / Portfolio' ? 'Work' : item}
+                <DecryptedText
+                  text={item === 'Work / Portfolio' ? 'Work' : item}
+                  animateOn="hover"
+                  speed={35}
+                  maxIterations={8}
+                  sequential={true}
+                  revealDirection="start"
+                  parentClassName=""
+                  style={{ display: 'inline' }}
+                />
                 <span
                   style={{
                     position: 'absolute',
