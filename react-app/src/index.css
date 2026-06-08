@@ -77,10 +77,36 @@ body {
   .section-text {
     max-width: 85% !important;
   }
+
+  .section {
+    min-height: auto !important;
+    padding: 80px 0 !important;
+  }
+
+  .border-glow-card {
+    --glow-padding: 20px !important;
+    --border-radius: 16px !important;
+  }
+
+  .service-card {
+    min-height: 200px;
+  }
 }
 
 @media (max-width: 480px) {
   .section-text {
     max-width: 90% !important;
+  }
+
+  .section {
+    padding: 60px 0 !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .border-glow-card::before,
+  .border-glow-card::after,
+  .border-glow-card > .edge-light {
+    opacity: 0.3 !important;
   }
 }
