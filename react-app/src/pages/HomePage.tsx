@@ -6,6 +6,7 @@ import Navbar from '../components/nav/Navbar'
 import ProjectGallery from '../components/sections/ProjectGallery'
 
 import TechStack from '../components/sections/TechStack'
+import Services from '../components/sections/Services'
 import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
 import DecryptedText from '../components/ui/DecryptedText'
 import InquiryForm from '../components/ui/InquiryForm'
@@ -137,48 +138,7 @@ export default function HomePage() {
 
       <ProjectGallery />
 
-      <SectionFadeIn id="services">
-        <SectionOverlay />
-        <div
-          className="absolute z-2"
-          style={{
-            top: '12%',
-            left: '4%',
-            maxWidth: '75%',
-          }}
-        >
-          <h1
-            className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
-            style={{
-              fontFamily: "'Anton', sans-serif",
-              fontSize: 'clamp(4rem, 14vw, 10rem)',
-            }}
-          >
-            SERVICES
-          </h1>
-        </div>
-        <div
-          className="absolute z-2 flex flex-wrap gap-x-12 gap-y-4"
-          style={{
-            top: '45%',
-            left: '4%',
-            maxWidth: '80%',
-          }}
-        >
-          {[
-            'Branding',
-            'Web Design',
-            'Website Development',
-            'UI/UX Design',
-            'Creative Direction',
-            'Digital Experiences',
-          ].map((s) => (
-            <div key={s} className="text-white/70" style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(0.9rem, 1.4vw, 1.15rem)', letterSpacing: '0.06em', padding: '0.35rem 1.2rem', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '2rem' }}>
-              {s}
-            </div>
-          ))}
-        </div>
-      </SectionFadeIn>
+      <Services />
 
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
