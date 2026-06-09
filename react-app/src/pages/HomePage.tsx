@@ -401,7 +401,9 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <InquiryForm />
+            <div style={{ flex: '1 1 450px', minWidth: 0 }}>
+              <InquiryForm />
+            </div>
           </div>
         </div>
         <p
