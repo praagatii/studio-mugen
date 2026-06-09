@@ -41,6 +41,7 @@ export default function DecryptedText({
   const [direction, setDirection] = useState('forward');
 
   const containerRef = useRef(null);
+  const wasRef = useRef(false);
   const orderRef = useRef([]);
   const pointerRef = useRef(0);
   const intervalRef = useRef(null);
@@ -313,15 +314,16 @@ export default function DecryptedText({
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
 
-    let wasIntersecting = false;
-
     const observerCallback = entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !wasIntersecting && !isAnimating) {
+        if (entry.isIntersecting && !wasRef.current && !isAnimating) {
+          wasRef.current = true;
           encryptInstantly();
           triggerDecrypt();
         }
-        wasIntersecting = entry.isIntersecting;
+        if (!entry.isIntersecting) {
+          wasRef.current = false;
+        }
       });
     };
 
