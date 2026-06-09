@@ -134,8 +134,8 @@ export default function Navbar() {
                 <DecryptedText
                   text={item === 'Work / Portfolio' ? 'Work' : item}
                   animateOn="hover"
-                  speed={30}
-                  maxIterations={6}
+                  speed={60}
+                  maxIterations={3}
                   sequential={true}
                   revealDirection="start"
                   parentClassName=""

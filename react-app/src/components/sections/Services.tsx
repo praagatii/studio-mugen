@@ -71,7 +71,7 @@ export default function Services() {
       >
         <DecryptedText
           text="Services"
-          {...{ speed: 30, maxIterations: 6, sequential: false, revealDirection: 'start', animateOn: 'view' }}
+          {...{ speed: 60, maxIterations: 3, sequential: false, revealDirection: 'start', animateOn: 'view' }}
           parentClassName="block"
         />
       </h2>
