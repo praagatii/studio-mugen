@@ -256,13 +256,7 @@ export default function HomePage() {
               }}
             >
               <DecryptedText
-                text="DESIGNING EXPERIENCES"
-                {...DT_CONFIG}
-                parentClassName="block"
-              />
-              <br />
-              <DecryptedText
-                text="PEOPLE REMEMBER"
+                text="GENESIS"
                 {...DT_CONFIG}
                 parentClassName="block"
               />
