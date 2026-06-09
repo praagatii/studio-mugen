@@ -63,7 +63,7 @@ function SectionFadeIn({
 const DT_CONFIG = {
   speed: 60,
   maxIterations: 12,
-  sequential: true,
+  sequential: false,
   revealDirection: 'start' as const,
   animateOn: 'view' as const,
 }

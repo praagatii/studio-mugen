@@ -36,7 +36,7 @@ export default function DecryptedText({
   const [displayText, setDisplayText] = useState(text);
   const [isAnimating, setIsAnimating] = useState(false);
   const [revealedIndices, setRevealedIndices] = useState(new Set());
-  const [hasAnimated, setHasAnimated] = useState(false);
+
   const [isDecrypted, setIsDecrypted] = useState(animateOn !== 'click');
   const [direction, setDirection] = useState('forward');
 
@@ -315,9 +315,9 @@ export default function DecryptedText({
 
     const observerCallback = entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting && !isAnimating) {
+          encryptInstantly();
           triggerDecrypt();
-          setHasAnimated(true);
         }
       });
     };
@@ -339,7 +339,7 @@ export default function DecryptedText({
         observer.unobserve(currentRef);
       }
     };
-  }, [animateOn, hasAnimated, triggerDecrypt]);
+  }, [animateOn, triggerDecrypt, encryptInstantly, isAnimating]);
 
   useEffect(() => {
     if (animateOn === 'click') {
