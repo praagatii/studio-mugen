@@ -313,12 +313,15 @@ export default function DecryptedText({
   useEffect(() => {
     if (animateOn !== 'view' && animateOn !== 'inViewHover') return;
 
+    let wasIntersecting = false;
+
     const observerCallback = entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !isAnimating) {
+        if (entry.isIntersecting && !wasIntersecting && !isAnimating) {
           encryptInstantly();
           triggerDecrypt();
         }
+        wasIntersecting = entry.isIntersecting;
       });
     };
 
