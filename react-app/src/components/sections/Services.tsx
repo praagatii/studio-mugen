@@ -61,20 +61,7 @@ export default function Services() {
         padding: 'clamp(60px, 8vw, 120px) clamp(20px, 4vw, 48px)',
       }}
     >
-      <span
-        className="text-white/30 uppercase tracking-[0.2em] block mb-2"
-        style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(0.7rem, 1vw, 0.85rem)' }}
-      >
-            <DecryptedText
-              text="What We Do"
-              animateOn="view"
-              speed={60}
-              maxIterations={12}
-              sequential={true}
-              revealDirection="start"
-              parentClassName=""
-            />
-      </span>
+
       <h2
         className="text-white uppercase leading-[0.95] tracking-[0.01em]"
         style={{
@@ -90,7 +77,7 @@ export default function Services() {
       </h2>
 
       <div
-        className="text-white/50 font-light leading-relaxed"
+        className="text-white font-light leading-relaxed"
         style={{
           fontSize: 'clamp(1rem, 1.8vw, 1.3rem)',
           maxWidth: '700px',
@@ -115,7 +102,7 @@ export default function Services() {
           <BorderGlow
             key={service.title}
             className="service-card"
-            backgroundColor="rgba(18, 15, 23, 0.6)"
+            backgroundColor="rgba(0, 0, 0, 0.6)"
             glowColor="0 0 100"
             glowIntensity={0.4}
             glowRadius={30}

@@ -29,7 +29,15 @@ export default function Navbar() {
       const href = getHref(item)
       if (item === 'Home') {
         e.preventDefault()
-        navigate('/')
+        if (pathname === '/') {
+          const target = document.getElementById('hero')
+          const l = (window as any).lenis
+          if (target && l) {
+            l.scrollTo(target, { offset: -60 })
+          }
+        } else {
+          navigate('/')
+        }
         setMenuOpen(false)
         return
       }
