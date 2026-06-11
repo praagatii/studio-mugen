@@ -11,6 +11,10 @@ import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
 import { saveLead, type Lead } from '../data/saveLead'
 import mugenLogo from '../assets/mugen.png'
 import blackholeImg from '../assets/blackhole.png'
+import rutamBg from '../assets/rutam bg.png'
+import srirangaBg from '../assets/sriranga bg.png'
+import rutamOverlay from '../assets/rutam overlay.png'
+import srirangaOverlay from '../assets/sriranga overlay.png'
 
 function useLenis() {
   useEffect(() => {
@@ -151,6 +155,73 @@ function InquiryForm() {
   )
 }
 
+function RutamSrirangaSection() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const rutamBgOpa = useTransform(scrollYProgress, (v) => {
+    if (v < 0.2) return 1
+    if (v > 0.27) return 0
+    return 1 - (v - 0.2) / 0.07
+  })
+  const srirangaBgOpa = useTransform(scrollYProgress, (v) => {
+    if (v < 0.2) return 0
+    if (v > 0.27) return 1
+    return (v - 0.2) / 0.07
+  })
+  const dissolveBlur = useTransform(scrollYProgress, (v) => {
+    if (v < 0.2 || v > 0.27) return 'blur(0px)'
+    const t = (v - 0.2) / 0.07
+    const px = t < 0.5 ? t * 8 : (1 - t) * 8
+    return `blur(${px}px)`
+  })
+  const rutamOverlayY = useTransform(scrollYProgress, (v) => {
+    if (v < 0.15) return '0%'
+    if (v > 0.35) return '-100%'
+    return `${((v - 0.15) / 0.2) * -100}%`
+  })
+  const srirangaOverlayY = useTransform(scrollYProgress, (v) => {
+    if (v < 0.2) return '100%'
+    if (v > 0.4) return '0%'
+    const t = (v - 0.2) / 0.2
+    return `${(1 - t) * 100}%`
+  })
+
+  return (
+    <div ref={sectionRef} id="rutam-sriranga" className="relative w-full" style={{ height: '300vh' }}>
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <motion.img
+          src={rutamBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+          style={{ opacity: rutamBgOpa, filter: dissolveBlur, zIndex: 0 }}
+        />
+        <motion.img
+          src={srirangaBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+          style={{ opacity: srirangaBgOpa, filter: dissolveBlur, zIndex: 1 }}
+        />
+        <motion.img
+          src={rutamOverlay}
+          alt=""
+          className="absolute left-0 w-full object-contain pointer-events-none select-none"
+          style={{ y: rutamOverlayY, zIndex: 2, bottom: '-5%' }}
+        />
+        <motion.img
+          src={srirangaOverlay}
+          alt=""
+          className="absolute bottom-0 left-0 w-full object-contain pointer-events-none select-none"
+          style={{ y: srirangaOverlayY, zIndex: 2 }}
+        />
+      </div>
+    </div>
+  )
+}
+
 export default function HomePage() {
   useLenis()
 
@@ -218,6 +289,9 @@ export default function HomePage() {
       <Services />
 
       <Skiper30 />
+
+      <RutamSrirangaSection />
+
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
         <div
