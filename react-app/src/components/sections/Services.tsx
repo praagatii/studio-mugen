@@ -98,7 +98,7 @@ export default function Services() {
           <BorderGlow
             key={service.title}
             className="service-card"
-            backgroundColor="rgba(0, 0, 0, 0.6)"
+            backgroundColor="#000"
             glowColor="0 0 100"
             glowIntensity={0.4}
             glowRadius={30}
