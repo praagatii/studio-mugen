@@ -187,6 +187,11 @@ function RutamSrirangaSection() {
     if (v > 0.38) return '-120%'
     return `${((v - 0.12) / 0.26) * -120}%`
   })
+  const rutamBtnOpa = useTransform(scrollYProgress, (v) => {
+    if (v < 0.12) return 1
+    if (v > 0.28) return 0
+    return 1 - (v - 0.12) / 0.16
+  })
   const srirangaOverlayY = useTransform(scrollYProgress, (v) => {
     if (v < 0.18) return '100%'
     if (v > 0.42) return '0%'
@@ -247,6 +252,31 @@ function RutamSrirangaSection() {
             />
           </picture>
         </motion.div>
+        <motion.a
+          href="https://neo-rutam-87uz.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 px-6 py-3 rounded-full text-white uppercase tracking-widest pointer-events-auto"
+          style={{
+            top: 'clamp(55%, 60vh, 65%)',
+            fontFamily: "'Montserrat', sans-serif",
+            fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+            fontWeight: 400,
+            border: '1px solid rgba(255,255,255,0.25)',
+            background: 'rgba(0,0,0,0.3)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
+            opacity: rutamBtnOpa,
+            textDecoration: 'none',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.3)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
+        >
+          Visit Site
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M7 17l9.2-9.2M17 17V7H7" />
+          </svg>
+        </motion.a>
       </div>
     </div>
   )
