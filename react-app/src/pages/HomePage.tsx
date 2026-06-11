@@ -167,30 +167,30 @@ function RutamSrirangaSection() {
   })
 
   const rutamBgOpa = useTransform(scrollYProgress, (v) => {
-    if (v < 0.2) return 1
-    if (v > 0.27) return 0
-    return 1 - (v - 0.2) / 0.07
+    if (v < 0.18) return 1
+    if (v > 0.28) return 0
+    return 1 - (v - 0.18) / 0.1
   })
   const srirangaBgOpa = useTransform(scrollYProgress, (v) => {
-    if (v < 0.2) return 0
-    if (v > 0.27) return 1
-    return (v - 0.2) / 0.07
+    if (v < 0.18) return 0
+    if (v > 0.28) return 1
+    return (v - 0.18) / 0.1
   })
   const dissolveBlur = useTransform(scrollYProgress, (v) => {
-    if (v < 0.2 || v > 0.27) return 'blur(0px)'
-    const t = (v - 0.2) / 0.07
+    if (v < 0.18 || v > 0.28) return 'blur(0px)'
+    const t = (v - 0.18) / 0.1
     const px = t < 0.5 ? t * 8 : (1 - t) * 8
     return `blur(${px}px)`
   })
   const rutamOverlayY = useTransform(scrollYProgress, (v) => {
-    if (v < 0.15) return '0%'
-    if (v > 0.35) return '-100%'
-    return `${((v - 0.15) / 0.2) * -100}%`
+    if (v < 0.12) return '0%'
+    if (v > 0.38) return '-120%'
+    return `${((v - 0.12) / 0.26) * -120}%`
   })
   const srirangaOverlayY = useTransform(scrollYProgress, (v) => {
-    if (v < 0.2) return '100%'
-    if (v > 0.4) return '0%'
-    const t = (v - 0.2) / 0.2
+    if (v < 0.18) return '100%'
+    if (v > 0.42) return '0%'
+    const t = (v - 0.18) / 0.24
     return `${(1 - t) * 100}%`
   })
 
@@ -337,7 +337,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
+                fontSize: 'clamp(2.8rem, 8vw, 7.5rem)',
               }}
             >
               GENESIS
@@ -392,7 +392,7 @@ export default function HomePage() {
               className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
               style={{
                 fontFamily: "'Anton', sans-serif",
-                fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
+                fontSize: 'clamp(2.8rem, 8vw, 7.5rem)',
               }}
             >
               BUILT WITHOUT LIMITS
@@ -426,12 +426,13 @@ export default function HomePage() {
               flexWrap: 'wrap',
             }}
           >
-            <div style={{ flex: '1 1 300px' }}>
+            <div style={{ flex: '1 1 300px', minWidth: 0 }}>
               <h1
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(6rem, 10vw, 7.5rem)',
+                  fontSize: 'clamp(2.8rem, 8vw, 7.5rem)',
+                  overflowWrap: 'break-word',
                 }}
               >
                 Let&rsquo;s build something unforgettable.

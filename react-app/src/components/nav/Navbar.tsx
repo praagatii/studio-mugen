@@ -3,18 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
 
-const NAV_ITEMS = ['Home', 'Work', 'Services', 'Projects', 'About', 'Contact']
+const NAV_ITEMS = ['Home', 'Work', 'Services', 'About', 'Contact']
 
 function getHref(item: string) {
-  if (item === 'Projects') return '/projects'
   if (item === 'Home' || item === 'Work') return '/'
   return `/#${item.toLowerCase()}`
 }
 
 function isActive(item: string, pathname: string) {
-  if (item === 'Home') return pathname === '/'
-  if (item === 'Work') return pathname === '/'
-  if (item === 'Projects') return pathname === '/projects'
   return false
 }
 
@@ -54,12 +50,6 @@ export default function Navbar() {
           const l = (window as any).lenis
           if (target && l) l.scrollTo(target, { offset: -60 })
         }
-        setMenuOpen(false)
-        return
-      }
-      if (item === 'Projects') {
-        e.preventDefault()
-        navigate('/projects')
         setMenuOpen(false)
         return
       }

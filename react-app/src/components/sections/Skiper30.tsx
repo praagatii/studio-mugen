@@ -43,7 +43,7 @@ const Skiper30 = () => {
     <section id="portfolio" className="relative w-full">
       <div
         ref={gallery}
-        className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden"
+        className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden max-md:h-[100vh] max-md:gap-[1vw]"
         style={{ background: '#000', padding: '2vw' }}
       >
         <Column images={[images[0], images[1], images[2]]} y={y} />
@@ -63,7 +63,7 @@ type ColumnProps = {
 const Column = ({ images, y }: ColumnProps) => {
   return (
     <motion.div
-      className="relative -top-[45%] flex h-full w-1/4 min-w-[250px] flex-col gap-[2vw] first:top-[-45%] [&:nth-child(2)]:top-[-95%] [&:nth-child(3)]:top-[-45%] [&:nth-child(4)]:top-[-75%]"
+      className="relative flex h-full w-1/4 flex-col gap-[2vw] max-md:gap-[1vw]"
       style={{ y }}
     >
       {images.map((src, i) => (
