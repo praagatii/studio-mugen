@@ -4,12 +4,11 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import DecryptedText from '../DecryptedText/DecryptedText'
 import mugenLogo from '../../assets/mugen-logo.png'
 
-const NAV_ITEMS = ['Home', 'About', 'Work / Portfolio', 'Projects', 'Contact']
+const NAV_ITEMS = ['Home', 'Services', 'Projects', 'About', 'Contact']
 
 function getHref(item: string) {
   if (item === 'Projects') return '/projects'
   if (item === 'Home') return '/'
-  if (item === 'Work / Portfolio') return '/#portfolio'
   return `/#${item.toLowerCase()}`
 }
 
@@ -132,7 +131,7 @@ export default function Navbar() {
                 onMouseLeave={(e) => { e.currentTarget.style.opacity = active ? '1' : '0.6' }}
               >
                 <DecryptedText
-                  text={item === 'Work / Portfolio' ? 'Work' : item}
+                  text={item}
                   animateOn="hover"
                   speed={60}
                   maxIterations={3}
