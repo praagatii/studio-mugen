@@ -237,8 +237,8 @@ function RutamSrirangaSection() {
           </picture>
         </motion.div>
         <motion.div
-          className="absolute left-0 bottom-0 w-full pointer-events-none select-none"
-          style={{ zIndex: 2 }}
+          className="absolute left-0 w-full pointer-events-none select-none"
+          style={{ zIndex: 2, bottom: '-8%' }}
           animate={{ y: [0, -10, 0] }}
           transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity, delay: 0.5 }}
         >
