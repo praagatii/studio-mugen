@@ -6,6 +6,7 @@ import Navbar from '../components/nav/Navbar'
 import { Skiper30 } from '../components/sections/Skiper30'
 import TechStack from '../components/sections/TechStack'
 import Services from '../components/sections/Services'
+import BorderGlow from '../components/BorderGlow/BorderGlow'
 import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
 import { saveLead, type Lead } from '../data/saveLead'
 import mugenLogo from '../assets/mugen.png'
@@ -120,7 +121,7 @@ function InquiryForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: 'clamp(16px, 2vw, 24px)', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px' }}>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '12px', padding: 'clamp(16px, 2vw, 24px)' }}>
       <div>
         <label style={labelStyle}>Company Name</label>
         <input name="company" value={form.company} onChange={handleChange} placeholder="Company name" style={inputStyle} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
@@ -329,7 +330,7 @@ export default function HomePage() {
                   fontSize: 'clamp(6rem, 10vw, 7.5rem)',
                 }}
               >
-                Have a project in mind?<br />Let&rsquo;s build something unforgettable.
+                Let&rsquo;s build something unforgettable.
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"
@@ -364,7 +365,19 @@ export default function HomePage() {
               </div>
             </div>
             <div style={{ flex: '1 1 450px', minWidth: 0 }}>
-              <InquiryForm />
+              <BorderGlow
+                backgroundColor="rgba(0, 0, 0, 0.6)"
+                glowColor="0 0 100"
+                glowIntensity={0.4}
+                glowRadius={30}
+                borderRadius={20}
+                coneSpread={30}
+                animated={true}
+                colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
+                fillOpacity={0.2}
+              >
+                <InquiryForm />
+              </BorderGlow>
             </div>
           </div>
         </div>
