@@ -24,11 +24,18 @@ const Skiper30 = () => {
     offset: ["start end", "end start"],
   });
 
-  const { height } = dimension;
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * 3]);
+  const { width, height } = dimension;
+  const isMobile = width < 768;
+
+  const m1 = isMobile ? 0.8 : 2;
+  const m2 = isMobile ? 1.3 : 3.3;
+  const m3 = isMobile ? 0.5 : 1.25;
+  const m4 = isMobile ? 1.1 : 3;
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, height * m1]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * m2]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * m3]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, height * m4]);
 
   useEffect(() => {
     const resize = () => {
@@ -43,7 +50,7 @@ const Skiper30 = () => {
     <section id="portfolio" className="relative w-full">
       <div
         ref={gallery}
-        className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden max-md:h-[100vh] max-md:gap-[1vw]"
+        className="relative box-border flex h-[175vh] gap-[2vw] overflow-hidden max-md:h-[150vh] max-md:gap-[1vw]"
         style={{ background: '#000', padding: '2vw' }}
       >
         <Column images={[images[0], images[1], images[2]]} y={y} />
@@ -63,7 +70,7 @@ type ColumnProps = {
 const Column = ({ images, y }: ColumnProps) => {
   return (
     <motion.div
-      className="relative flex h-full w-1/4 flex-col gap-[2vw] max-md:gap-[1vw]"
+      className="relative -top-[45%] flex h-full w-1/4 min-w-[250px] flex-col gap-[2vw] first:top-[-45%] [&:nth-child(2)]:top-[-95%] [&:nth-child(3)]:top-[-45%] [&:nth-child(4)]:top-[-75%] max-md:min-w-0 max-md:first:top-[-20%] max-md:[&:nth-child(2)]:top-[-55%] max-md:[&:nth-child(3)]:top-[-25%] max-md:[&:nth-child(4)]:top-[-40%] max-md:gap-[1vw]"
       style={{ y }}
     >
       {images.map((src, i) => (
