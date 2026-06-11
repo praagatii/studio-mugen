@@ -253,8 +253,8 @@ function RutamSrirangaSection() {
           </picture>
         </motion.div>
         <motion.div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
-          style={{ opacity: rutamBtnOpa }}
+          className="absolute left-1/2 -translate-x-1/2 z-10 pointer-events-auto"
+          style={{ opacity: rutamBtnOpa, bottom: 'clamp(8%, 10vh, 12%)' }}
         >
           <BorderGlow
             backgroundColor="#000"
@@ -274,14 +274,14 @@ function RutamSrirangaSection() {
               className="block text-white uppercase tracking-widest pointer-events-auto"
               style={{
                 fontFamily: "'Montserrat', sans-serif",
-                fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+                fontSize: 'clamp(0.75rem, 1vw, 1rem)',
                 fontWeight: 400,
                 textDecoration: 'none',
-                padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
+                padding: 'clamp(12px, 1.4vw, 16px) clamp(24px, 3vw, 40px)',
               }}
             >
               Visit Site
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
                 <path d="M7 17l9.2-9.2M17 17V7H7" />
               </svg>
             </a>
