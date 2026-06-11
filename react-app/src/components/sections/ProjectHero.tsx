@@ -1,65 +1,14 @@
-import { useRef, useState, useCallback, useEffect } from 'react'
 import { PROJECTS } from '../../data/projects'
-
-function useResponsiveVideoSize() {
-  const [size, setSize] = useState({ w: 500, h: 281 })
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)')
-    setSize(mq.matches ? { w: 250, h: 140 } : { w: 500, h: 281 })
-    const handler = (e: MediaQueryListEvent) => setSize(e.matches ? { w: 250, h: 140 } : { w: 500, h: 281 })
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
-  }, [])
-  return size
-}
 
 export default function ProjectHero({
   project,
 }: {
   project: (typeof PROJECTS)[0]
 }) {
-  const { w: videoW, h: videoH } = useResponsiveVideoSize()
-  const cursorVideoRef = useRef<HTMLVideoElement | null>(null)
-  const leaveTimeoutRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
-  const [isHovering, setIsHovering] = useState(false)
-
-  const handleMouseEnter = useCallback(() => {
-    if (!project.videoSrc) return
-    clearTimeout(leaveTimeoutRef.current)
-    setIsHovering(true)
-    const v = cursorVideoRef.current
-    if (v) {
-      v.src = project.videoSrc
-      v.currentTime = 0
-      v.load()
-      v.play().catch(() => {})
-    }
-  }, [project.videoSrc])
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHovering(false)
-    leaveTimeoutRef.current = setTimeout(() => {
-      const v = cursorVideoRef.current
-      if (v) { v.pause(); v.src = '' }
-    }, 300)
-  }, [])
-
-  const handleMouseMove = useCallback((e: React.MouseEvent) => {
-    if (!isHovering) return
-    const v = cursorVideoRef.current
-    if (v) {
-      v.style.left = `${e.clientX + 20}px`
-      v.style.top = `${e.clientY + 20}px`
-    }
-  }, [isHovering])
-
   return (
     <section
       id={project.id}
       className="relative w-full h-screen overflow-hidden"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseMove={handleMouseMove}
     >
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
       <img
@@ -97,21 +46,6 @@ export default function ProjectHero({
           {project.title}
         </h2>
       </div>
-
-      <video
-        ref={cursorVideoRef}
-        className="fixed pointer-events-none z-50 object-cover"
-        style={{
-          width: `${videoW}px`,
-          height: `${videoH}px`,
-          opacity: isHovering ? 1 : 0,
-          transition: 'opacity 1.2s cubic-bezier(0.2, 0.9, 0.3, 1)',
-        }}
-        muted
-        loop
-        playsInline
-        preload="auto"
-      />
     </section>
   )
 }

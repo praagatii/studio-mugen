@@ -3,11 +3,10 @@ import { Helmet } from 'react-helmet-async'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import Navbar from '../components/nav/Navbar'
-import ProjectGallery from '../components/sections/ProjectGallery'
+import { Skiper30 } from '../components/sections/Skiper30'
 import TechStack from '../components/sections/TechStack'
 import Services from '../components/sections/Services'
 import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
-import DecryptedText from '../components/DecryptedText/DecryptedText'
 import { saveLead, type Lead } from '../data/saveLead'
 import mugenLogo from '../assets/mugen.png'
 import blackholeImg from '../assets/blackhole.png'
@@ -60,13 +59,6 @@ function SectionFadeIn({
   )
 }
 
-const DT_CONFIG = {
-  speed: 50,
-  maxIterations: 4,
-  sequential: false,
-  revealDirection: 'start' as const,
-  animateOn: 'view' as const,
-}
 
 function InquiryForm() {
   const [form, setForm] = useState({ company: '', name: '', email: '', phone: '', message: '' })
@@ -176,7 +168,7 @@ export default function HomePage() {
     target: heroRef,
     offset: ['start start', 'end start'],
   })
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0.3])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
   return (
     <div className="relative z-10">
@@ -220,29 +212,17 @@ export default function HomePage() {
             filter: 'drop-shadow(0 0 24px rgba(255,255,255,0.04))',
           }}
         />
-        <p
-          className="absolute text-white/30 uppercase tracking-[0.3em]"
-          style={{
-            bottom: '12%',
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 'clamp(0.65rem, 1.2vw, 0.85rem)',
-            letterSpacing: '0.4em',
-          }}
-        >
-          Branding {'\u2022'} Web Design {'\u2022'} Creative Direction {'\u2022'} Digital Experiences
-        </p>
       </motion.section>
-
-      <ProjectGallery />
 
       <Services />
 
+      <Skiper30 />
       <SectionFadeIn id="portfolio">
         <SectionOverlay />
         <div
           className="relative z-2 w-full h-full flex flex-col"
           style={{
-            padding: 'clamp(80px, 10vh, 120px) clamp(20px, 4vw, 48px)',
+            padding: 'clamp(160px, 16vh, 200px) clamp(28px, 5vw, 56px)',
             minHeight: '100vh',
             gap: 'clamp(24px, 4vw, 48px)',
           }}
@@ -255,11 +235,7 @@ export default function HomePage() {
                 fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
               }}
             >
-              <DecryptedText
-                text="GENESIS"
-                {...DT_CONFIG}
-                parentClassName="block"
-              />
+              GENESIS
             </h1>
             <p
               className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
@@ -314,11 +290,7 @@ export default function HomePage() {
                 fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
               }}
             >
-              <DecryptedText
-                text="BUILT WITHOUT LIMITS"
-                {...DT_CONFIG}
-                parentClassName="block"
-              />
+              BUILT WITHOUT LIMITS
             </h1>
             <p
               className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
@@ -357,11 +329,7 @@ export default function HomePage() {
                   fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
                 }}
               >
-                <DecryptedText
-                  text="Contact"
-                  {...DT_CONFIG}
-                  parentClassName="block"
-                />
+                Contact
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"

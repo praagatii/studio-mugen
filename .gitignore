@@ -1,1 +1,6 @@
-WPSDrive - Shortcut.lnk
+node_modules
+dist
+dist-ssr
+*.local
+.vite
+*.tsbuildinfo

@@ -1,6 +1,6 @@
 import { SERVICES } from '../../data/services'
 import BorderGlow from '../BorderGlow/BorderGlow'
-import DecryptedText from '../DecryptedText/DecryptedText'
+
 
 function ServiceIcon({ icon }: { icon: string }) {
   const paths: Record<string, JSX.Element> = {
@@ -69,11 +69,7 @@ export default function Services() {
           fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
         }}
       >
-        <DecryptedText
-          text="Services"
-          {...{ speed: 60, maxIterations: 3, sequential: false, revealDirection: 'start', animateOn: 'view' }}
-          parentClassName="block"
-        />
+        Services
       </h2>
 
       <div
@@ -131,6 +127,15 @@ export default function Services() {
               >
                 {service.title}
               </h3>
+              <p
+                className="text-white/50 font-light leading-relaxed"
+                style={{
+                  fontSize: 'clamp(0.75rem, 1vw, 0.85rem)',
+                  lineHeight: '1.5',
+                }}
+              >
+                {service.description}
+              </p>
             </div>
           </BorderGlow>
         ))}

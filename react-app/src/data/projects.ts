@@ -6,14 +6,11 @@ import rutamImg from '../assets/rutam.png'
 import p7Img from '../assets/p7.png'
 import blind75Img from '../assets/blind75.png'
 import miraiImg from '../assets/mirai.png'
-import srirangaVideo from '../assets/srirangavideo.mp4'
-import resolveVideo from '../assets/resolvelms.mp4'
 
 export interface ProjectData {
   id: string
   img: string
   thumbnail: string
-  videoSrc?: string
   title: string
   year: string
   category: string
@@ -27,7 +24,6 @@ export const PROJECTS: ProjectData[] = [
     id: 'project-0',
     img: srirangaImg,
     thumbnail: srirangaImg,
-    videoSrc: srirangaVideo,
     title: 'SRIRANGA ORGANICS',
     year: '2026',
     category: 'Brand Identity / Web Experience',
@@ -39,7 +35,6 @@ export const PROJECTS: ProjectData[] = [
     id: 'project-1',
     img: resolveImg,
     thumbnail: resolveImg,
-    videoSrc: resolveVideo,
     title: 'RESOLVE',
     year: '2026',
     category: 'Product Design / Interface',
