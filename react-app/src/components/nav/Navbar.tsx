@@ -3,16 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate, useLocation } from 'react-router-dom'
 import mugenLogo from '../../assets/mugen-logo.png'
 
-const NAV_ITEMS = ['Home', 'Services', 'Projects', 'About', 'Contact']
+const NAV_ITEMS = ['Home', 'Work', 'Services', 'Projects', 'About', 'Contact']
 
 function getHref(item: string) {
   if (item === 'Projects') return '/projects'
-  if (item === 'Home') return '/'
+  if (item === 'Home' || item === 'Work') return '/'
   return `/#${item.toLowerCase()}`
 }
 
 function isActive(item: string, pathname: string) {
   if (item === 'Home') return pathname === '/'
+  if (item === 'Work') return pathname === '/'
   if (item === 'Projects') return pathname === '/projects'
   return false
 }
@@ -35,6 +36,23 @@ export default function Navbar() {
           }
         } else {
           navigate('/')
+        }
+        setMenuOpen(false)
+        return
+      }
+      if (item === 'Work') {
+        e.preventDefault()
+        if (pathname !== '/') {
+          navigate('/')
+          setTimeout(() => {
+            const target = document.getElementById('rutam-sriranga')
+            const l = (window as any).lenis
+            if (target && l) l.scrollTo(target, { offset: -60 })
+          }, 100)
+        } else {
+          const target = document.getElementById('rutam-sriranga')
+          const l = (window as any).lenis
+          if (target && l) l.scrollTo(target, { offset: -60 })
         }
         setMenuOpen(false)
         return

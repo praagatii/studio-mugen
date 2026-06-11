@@ -15,6 +15,10 @@ import rutamBg from '../assets/rutam bg.png'
 import srirangaBg from '../assets/sriranga bg.png'
 import rutamOverlay from '../assets/rutam overlay.png'
 import srirangaOverlay from '../assets/sriranga overlay.png'
+import rutamBgMobile from '../assets/rutam-bg-mobile.png'
+import srirangaBgMobile from '../assets/sriranga-bg-mobile.png'
+import rutamOverlayMobile from '../assets/rutam-overlay-mobile.png'
+import srirangaOverlayMobile from '../assets/sriranga-overlay-mobile.png'
 
 function useLenis() {
   useEffect(() => {
@@ -82,7 +86,7 @@ function InquiryForm() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    background: 'rgba(255,255,255,0.04)',
+    background: '#111',
     border: '1px solid rgba(255,255,255,0.1)',
     borderRadius: '6px',
     padding: '8px 12px',
@@ -112,7 +116,7 @@ function InquiryForm() {
           flexDirection: 'column',
           gap: '12px',
           padding: 'clamp(16px, 2vw, 24px)',
-          background: 'rgba(255,255,255,0.02)',
+          background: '#111',
           border: '1px solid rgba(255,255,255,0.08)',
           borderRadius: '12px',
           textAlign: 'center',
@@ -146,9 +150,9 @@ function InquiryForm() {
         <label style={labelStyle}>Message *</label>
         <textarea name="message" value={form.message} onChange={handleChange} required placeholder="Tell us about your project..." rows={3} style={{ ...inputStyle, resize: 'vertical', minHeight: '60px' }} onFocus={e => { e.target.style.borderColor = 'rgba(255,255,255,0.3)' }} onBlur={e => { e.target.style.borderColor = 'rgba(255,255,255,0.1)' }} />
       </div>
-      <button type="submit" style={{ marginTop: '2px', padding: '10px 20px', background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', color: '#fff', fontSize: '0.75rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}
-        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}>
+      <button type="submit" style={{ marginTop: '2px', padding: '10px 20px', background: '#222', border: '1px solid rgba(255,255,255,0.15)', borderRadius: '6px', color: '#fff', fontSize: '0.75rem', fontFamily: "'Montserrat', sans-serif", fontWeight: 400, textTransform: 'uppercase', letterSpacing: '0.15em', cursor: 'pointer', transition: 'background 0.3s ease, border-color 0.3s ease' }}
+        onMouseEnter={e => { e.currentTarget.style.background = '#333'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = '#222'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)' }}>
         Send Inquiry
       </button>
     </form>
@@ -191,32 +195,58 @@ function RutamSrirangaSection() {
   })
 
   return (
-    <div ref={sectionRef} id="rutam-sriranga" className="relative w-full" style={{ height: '300vh' }}>
+    <div ref={sectionRef} id="rutam-sriranga" className="relative w-full max-md:h-[200vh] h-[300vh]">
       <div className="sticky top-0 h-screen overflow-hidden">
-        <motion.img
-          src={rutamBg}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-          style={{ opacity: rutamBgOpa, filter: dissolveBlur, zIndex: 0 }}
-        />
-        <motion.img
-          src={srirangaBg}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-          style={{ opacity: srirangaBgOpa, filter: dissolveBlur, zIndex: 1 }}
-        />
-        <motion.img
-          src={rutamOverlay}
-          alt=""
-          className="absolute left-0 w-full object-contain pointer-events-none select-none"
-          style={{ y: rutamOverlayY, zIndex: 2, bottom: '-5%' }}
-        />
-        <motion.img
-          src={srirangaOverlay}
-          alt=""
-          className="absolute bottom-0 left-0 w-full object-contain pointer-events-none select-none"
-          style={{ y: srirangaOverlayY, zIndex: 2 }}
-        />
+        <picture>
+          <source media="(max-width: 767px)" srcSet={rutamBgMobile} />
+          <motion.img
+            src={rutamBg}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            style={{ opacity: rutamBgOpa, filter: dissolveBlur, zIndex: 0 }}
+          />
+        </picture>
+        <picture>
+          <source media="(max-width: 767px)" srcSet={srirangaBgMobile} />
+          <motion.img
+            src={srirangaBg}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+            style={{ opacity: srirangaBgOpa, filter: dissolveBlur, zIndex: 1 }}
+          />
+        </picture>
+        <motion.div
+          className="absolute left-0 w-full pointer-events-none select-none"
+          style={{ zIndex: 2, bottom: '-5%' }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
+        >
+          <picture>
+            <source media="(max-width: 767px)" srcSet={rutamOverlayMobile} />
+            <motion.img
+              src={rutamOverlay}
+              alt=""
+              className="w-full max-md:object-cover object-contain"
+              style={{ y: rutamOverlayY }}
+            />
+          </picture>
+        </motion.div>
+        <motion.div
+          className="absolute left-0 bottom-0 w-full pointer-events-none select-none"
+          style={{ zIndex: 2 }}
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity, delay: 0.5 }}
+        >
+          <picture>
+            <source media="(max-width: 767px)" srcSet={srirangaOverlayMobile} />
+            <motion.img
+              src={srirangaOverlay}
+              alt=""
+              className="w-full max-md:object-cover object-contain"
+              style={{ y: srirangaOverlayY }}
+            />
+          </picture>
+        </motion.div>
       </div>
     </div>
   )
@@ -440,7 +470,7 @@ export default function HomePage() {
             </div>
             <div style={{ flex: '1 1 450px', minWidth: 0 }}>
               <BorderGlow
-                backgroundColor="rgba(0, 0, 0, 0.6)"
+                backgroundColor="#000"
                 glowColor="0 0 100"
                 glowIntensity={0.4}
                 glowRadius={30}
@@ -448,7 +478,7 @@ export default function HomePage() {
                 coneSpread={30}
                 animated={true}
                 colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
-                fillOpacity={0.2}
+                fillOpacity={1}
               >
                 <InquiryForm />
               </BorderGlow>
