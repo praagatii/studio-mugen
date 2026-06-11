@@ -171,11 +171,7 @@ function RutamSrirangaSection() {
     if (v > 0.28) return 0
     return 1 - (v - 0.18) / 0.1
   })
-  const srirangaBgOpa = useTransform(scrollYProgress, (v) => {
-    if (v < 0.18) return 0
-    if (v > 0.28) return 1
-    return (v - 0.18) / 0.1
-  })
+  const srirangaBgOpa = useTransform(scrollYProgress, () => 1)
   const dissolveBlur = useTransform(scrollYProgress, (v) => {
     if (v < 0.18 || v > 0.28) return 'blur(0px)'
     const t = (v - 0.18) / 0.1
