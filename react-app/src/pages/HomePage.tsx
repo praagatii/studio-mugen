@@ -326,10 +326,10 @@ export default function HomePage() {
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
-                  fontSize: 'clamp(5.5rem, 10vw, 7.5rem)',
+                  fontSize: 'clamp(6rem, 10vw, 7.5rem)',
                 }}
               >
-                Contact
+                Have a project in mind?<br />Let&rsquo;s build something unforgettable.
               </h1>
               <div
                 className="text-white font-light text-left mt-4 max-w-[560px] leading-relaxed"

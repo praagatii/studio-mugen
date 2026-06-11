@@ -113,7 +113,7 @@ export default function Services() {
                 padding: 'clamp(20px, 2.5vw, 30px)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '10px',
+                gap: '4px',
               }}
             >
               <ServiceIcon icon={service.icon} />
