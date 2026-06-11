@@ -252,31 +252,41 @@ function RutamSrirangaSection() {
             />
           </picture>
         </motion.div>
-        <motion.a
-          href="https://neo-rutam-87uz.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-2 px-6 py-3 rounded-full text-white uppercase tracking-widest pointer-events-auto"
-          style={{
-            top: 'clamp(55%, 60vh, 65%)',
-            fontFamily: "'Montserrat', sans-serif",
-            fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
-            fontWeight: 400,
-            border: '1px solid rgba(255,255,255,0.25)',
-            background: 'rgba(0,0,0,0.3)',
-            backdropFilter: 'blur(6px)',
-            WebkitBackdropFilter: 'blur(6px)',
-            opacity: rutamBtnOpa,
-            textDecoration: 'none',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.3)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)' }}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-auto"
+          style={{ opacity: rutamBtnOpa }}
         >
-          Visit Site
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M7 17l9.2-9.2M17 17V7H7" />
-          </svg>
-        </motion.a>
+          <BorderGlow
+            backgroundColor="#000"
+            glowColor="0 0 100"
+            glowIntensity={0.4}
+            glowRadius={30}
+            borderRadius={16}
+            coneSpread={30}
+            animated={true}
+            colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
+            fillOpacity={1}
+          >
+            <a
+              href="https://neo-rutam-87uz.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-white uppercase tracking-widest pointer-events-auto"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                fontSize: 'clamp(0.65rem, 0.9vw, 0.8rem)',
+                fontWeight: 400,
+                textDecoration: 'none',
+                padding: 'clamp(10px, 1.2vw, 14px) clamp(20px, 2.5vw, 32px)',
+              }}
+            >
+              Visit Site
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
+                <path d="M7 17l9.2-9.2M17 17V7H7" />
+              </svg>
+            </a>
+          </BorderGlow>
+        </motion.div>
       </div>
     </div>
   )
