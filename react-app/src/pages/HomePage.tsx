@@ -466,13 +466,14 @@ export default function HomePage() {
               flexWrap: 'wrap',
             }}
           >
-            <div style={{ flex: '1 1 300px', minWidth: 0 }}>
+            <div style={{ flex: '1 1 500px', minWidth: 0 }}>
               <h1
                 className="text-white uppercase leading-[0.95] tracking-[0.01em] text-left"
                 style={{
                   fontFamily: "'Anton', sans-serif",
                   fontSize: 'clamp(2.8rem, 8vw, 7.5rem)',
                   overflowWrap: 'break-word',
+                  wordBreak: 'break-word',
                 }}
               >
                 Let&rsquo;s build something unforgettable.
