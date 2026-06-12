@@ -460,7 +460,7 @@ export default function HomePage() {
           <div
             style={{
               display: 'flex',
-              gap: 'clamp(32px, 5vw, 64px)',
+              gap: 'clamp(24px, 4vw, 48px)',
               alignItems: 'flex-start',
               width: '100%',
               flexWrap: 'wrap',
@@ -509,7 +509,7 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <div style={{ flex: '1 1 450px', minWidth: 0 }}>
+            <div style={{ flex: '1 1 350px', minWidth: 0 }}>
               <BorderGlow
                 backgroundColor="#000"
                 glowColor="0 0 100"
