@@ -509,7 +509,7 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <div style={{ flex: '1 1 350px', minWidth: 0 }}>
+            <div style={{ flex: '1 1 280px', minWidth: 0 }}>
               <BorderGlow
                 backgroundColor="#000"
                 glowColor="0 0 100"
