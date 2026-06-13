@@ -161,10 +161,13 @@ export default function Navbar() {
             style={{
               background: 'none',
               border: 'none',
-              padding: '8px',
+              padding: '5px',
               cursor: 'pointer',
-              width: '34px',
-              height: '34px',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             aria-label="Toggle menu"
           >

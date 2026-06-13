@@ -23,7 +23,7 @@ export default function ProjectHero({
         }}
       />
       <div
-        className="absolute z-10"
+        className="absolute z-10 project-hero-text"
         style={{
           bottom: '12%',
           left: '4%',

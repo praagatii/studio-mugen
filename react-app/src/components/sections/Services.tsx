@@ -130,7 +130,7 @@ export default function Services() {
               <p
                 className="text-white/50 font-light leading-relaxed"
                 style={{
-                  fontSize: 'clamp(0.75rem, 1vw, 0.85rem)',
+                  fontSize: 'clamp(0.8rem, 1vw, 0.85rem)',
                   lineHeight: '1.5',
                 }}
               >
