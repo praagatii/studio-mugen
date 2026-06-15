@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useCallback } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
-import Navbar from '../components/nav/Navbar'
 import { Skiper30 } from '../components/sections/Skiper30'
 import TechStack from '../components/sections/TechStack'
 import Services from '../components/sections/Services'
@@ -321,13 +320,12 @@ export default function HomePage() {
         <meta property="og:title" content="Mugen Studios — Cinematic Digital Experiences" />
         <meta property="og:url" content="https://studio-mugen.com/" />
       </Helmet>
-      <Navbar />
 
       <motion.section
         id="hero"
         ref={heroRef}
         className="section w-full h-screen flex items-center justify-center overflow-hidden"
-        style={{ opacity: heroOpacity }}
+        style={{ opacity: heroOpacity, position: 'relative', zIndex: 2 }}
       >
         <div
           className="absolute inset-0 pointer-events-none"

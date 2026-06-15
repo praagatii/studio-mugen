@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
-import Navbar from '../components/nav/Navbar'
 import ProjectHero from '../components/sections/ProjectHero'
 import { PROJECTS } from '../data/projects'
 
@@ -48,7 +47,6 @@ export default function ProjectsPage() {
         <meta property="og:title" content="Projects — Mugen Studios" />
         <meta property="og:url" content="https://studio-mugen.com/projects" />
       </Helmet>
-      <Navbar />
 
       {SHOW_PROJECTS.map((project) => (
         <ProjectHero key={project.id} project={project} />
