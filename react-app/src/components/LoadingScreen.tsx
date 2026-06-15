@@ -1,25 +1,39 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const MIN_DISPLAY_MS = 2000
+const MIN_DISPLAY_MS = 1000
 
 function sleep(ms: number) {
   return new Promise<void>(r => setTimeout(r, ms))
 }
 
-function waitForImages(): Promise<void> {
-  const imgs = Array.from(document.querySelectorAll('img:not([loading="lazy"])'))
-  const pending = imgs.filter(img => !img.complete)
-  if (pending.length === 0) return Promise.resolve()
-  return Promise.all(
-    pending.map(
-      img =>
-        new Promise<void>(resolve => {
-          img.addEventListener('load', () => resolve(), { once: true })
-          img.addEventListener('error', () => resolve(), { once: true })
-        }),
-    ),
-  ).then(() => {})
+function waitForAllImages(): Promise<void> {
+  const check = () => {
+    const imgs = Array.from(document.querySelectorAll('img'))
+    return imgs.every(img => img.complete || img.loading === 'lazy')
+  }
+  if (check()) return Promise.resolve()
+
+  return new Promise<void>(resolve => {
+    let pending = Array.from(document.querySelectorAll('img')).filter(
+      img => !img.complete && img.loading !== 'lazy',
+    )
+    if (pending.length === 0) return resolve()
+
+    let remaining = pending.length
+    const onDone = () => {
+      remaining--
+      if (remaining <= 0) resolve()
+    }
+    for (const img of pending) {
+      img.addEventListener('load', onDone, { once: true })
+      img.addEventListener('error', onDone, { once: true })
+    }
+  })
+}
+
+function raf(): Promise<void> {
+  return new Promise<void>(resolve => requestAnimationFrame(() => resolve()))
 }
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -37,33 +51,39 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
     async function flow() {
       const start = performance.now()
 
-      await document.fonts.ready
+      await Promise.all([
+        document.fonts.ready,
+        new Promise<void>(resolve => {
+          if (document.readyState === 'complete') resolve()
+          else window.addEventListener('load', () => resolve(), { once: true })
+        }),
+      ])
       if (cancelled) return
 
-      await waitForImages()
+      await waitForAllImages()
       if (cancelled) return
 
-      await new Promise<void>(resolve => requestAnimationFrame(resolve))
+      for (let i = 0; i < 5; i++) {
+        await raf()
+        if (cancelled) return
+      }
+
+      await sleep(1000)
       if (cancelled) return
 
-      await new Promise<void>(resolve => requestAnimationFrame(resolve))
-      if (cancelled) return
-
-      const elapsed = performance.now() - start
-      const remaining = Math.max(0, MIN_DISPLAY_MS - elapsed)
-      await sleep(remaining)
-
-      if (cancelled) return
       setDone(true)
-      await sleep(800)
-
-      if (cancelled) return
-      onComplete()
     }
 
     flow()
+
     return () => { cancelled = true }
   }, [onComplete])
+
+  useEffect(() => {
+    if (!done) return
+    const t = setTimeout(() => onComplete(), 800)
+    return () => clearTimeout(t)
+  }, [done, onComplete])
 
   return (
     <AnimatePresence>

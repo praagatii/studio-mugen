@@ -44,9 +44,6 @@ export default function App() {
 
         <div
           style={{
-            opacity: appReady ? 1 : 0,
-            transition: 'opacity 0.8s ease',
-            pointerEvents: appReady ? 'auto' : 'none',
             position: 'relative',
             zIndex: 2,
           }}
