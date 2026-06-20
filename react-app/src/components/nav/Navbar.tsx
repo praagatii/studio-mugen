@@ -14,7 +14,7 @@ function isActive(item: string, pathname: string) {
   return false
 }
 
-export default function Navbar() {
+export default function Navbar({ loaded = false }: { loaded?: boolean }) {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const [menuOpen, setMenuOpen] = useState(false)
@@ -81,10 +81,11 @@ export default function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
           mixBlendMode: 'var(--nav-blend)' as any,
+          pointerEvents: loaded ? 'auto' : 'none',
         }}
-        initial={{ opacity: 0, y: -16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
+        initial={false}
+        animate={{ opacity: loaded ? 1 : 0, y: loaded ? 0 : -8 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <button
           onClick={() => {
@@ -161,10 +162,13 @@ export default function Navbar() {
             style={{
               background: 'none',
               border: 'none',
-              padding: '8px',
+              padding: '5px',
               cursor: 'pointer',
-              width: '34px',
-              height: '34px',
+              width: '44px',
+              height: '44px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             aria-label="Toggle menu"
           >
