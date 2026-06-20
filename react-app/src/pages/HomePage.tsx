@@ -164,6 +164,14 @@ function RutamSrirangaSection() {
     target: sectionRef,
     offset: ['start start', 'end start'],
   })
+  const [showSrirangaBtn, setShowSrirangaBtn] = useState(false)
+
+  useEffect(() => {
+    const unsub = scrollYProgress.on('change', (v) => {
+      setShowSrirangaBtn(v > 0.28)
+    })
+    return () => unsub()
+  }, [scrollYProgress])
 
   const rutamBgOpa = useTransform(scrollYProgress, (v) => {
     if (v < 0.18) return 1
@@ -186,12 +194,6 @@ function RutamSrirangaSection() {
     if (v > 0.38) return '-120%'
     return `${((v - 0.12) / 0.26) * -120}%`
   })
-  const rutamBtnOpa = useTransform(scrollYProgress, (v) => {
-    if (v < 0.12) return 1
-    if (v > 0.28) return 0
-    return 1 - (v - 0.12) / 0.16
-  })
-  const rutamBtnPE = useTransform(scrollYProgress, (v) => v < 0.28 ? 'auto' : 'none')
   const srirangaOverlayY = useTransform(scrollYProgress, (v) => {
     if (v < 0.18) return '100%'
     if (v > 0.42) return '0%'
@@ -258,76 +260,87 @@ function RutamSrirangaSection() {
             />
           </picture>
         </motion.div>
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2 z-10"
-          style={{ opacity: rutamBtnOpa, bottom: 'clamp(8%, 10vh, 12%)', pointerEvents: rutamBtnPE }}
-        >
-          <BorderGlow
-            backgroundColor="#000"
-            glowColor="0 0 100"
-            glowIntensity={0.4}
-            glowRadius={30}
-            borderRadius={16}
-            coneSpread={30}
-            animated={true}
-            colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
-            fillOpacity={1}
+        {!showSrirangaBtn && (
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 z-10"
+            style={{ bottom: 'clamp(8%, 10vh, 12%)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
           >
-            <a
-              href="https://neo-rutam-87uz.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-white uppercase tracking-widest pointer-events-auto"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: 'clamp(0.75rem, 1vw, 1rem)',
-                fontWeight: 400,
-                textDecoration: 'none',
-                padding: 'clamp(12px, 1.4vw, 16px) clamp(24px, 3vw, 40px)',
-              }}
+            <BorderGlow
+              backgroundColor="#000"
+              glowColor="0 0 100"
+              glowIntensity={0.4}
+              glowRadius={30}
+              borderRadius={16}
+              coneSpread={30}
+              animated={true}
+              colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
+              fillOpacity={1}
             >
-              Visit Site
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
-                <path d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-            </a>
-          </BorderGlow>
-        </motion.div>
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2 z-10"
-          style={{ opacity: srirangaBtnOpa, bottom: 'clamp(8%, 10vh, 12%)', pointerEvents: srirangaBtnPE }}
-        >
-          <BorderGlow
-            backgroundColor="#000"
-            glowColor="0 0 100"
-            glowIntensity={0.4}
-            glowRadius={30}
-            borderRadius={16}
-            coneSpread={30}
-            animated={true}
-            colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
-            fillOpacity={1}
+              <a
+                href="https://neo-rutam-87uz.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 'clamp(0.75rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  padding: 'clamp(12px, 1.4vw, 16px) clamp(24px, 3vw, 40px)',
+                }}
+              >
+                Visit Site
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
+                  <path d="M7 17l9.2-9.2M17 17V7H7" />
+                </svg>
+              </a>
+            </BorderGlow>
+          </motion.div>
+        )}
+        {showSrirangaBtn && (
+          <motion.div
+            className="absolute left-1/2 -translate-x-1/2 z-10"
+            style={{ bottom: 'clamp(8%, 10vh, 12%)' }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
           >
-            <a
-              href="https://sriranga-plum.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-white uppercase tracking-widest pointer-events-auto"
-              style={{
-                fontFamily: "'Montserrat', sans-serif",
-                fontSize: 'clamp(0.75rem, 1vw, 1rem)',
-                fontWeight: 400,
-                textDecoration: 'none',
-                padding: 'clamp(12px, 1.4vw, 16px) clamp(24px, 3vw, 40px)',
-              }}
+            <BorderGlow
+              backgroundColor="#000"
+              glowColor="0 0 100"
+              glowIntensity={0.4}
+              glowRadius={30}
+              borderRadius={16}
+              coneSpread={30}
+              animated={true}
+              colors={['rgba(255,255,255,0.06)', 'rgba(255,255,255,0.03)', 'rgba(255,255,255,0.04)']}
+              fillOpacity={1}
             >
-              Visit Site
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
-                <path d="M7 17l9.2-9.2M17 17V7H7" />
-              </svg>
-            </a>
-          </BorderGlow>
-        </motion.div>
+              <a
+                href="https://sriranga-plum.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-white uppercase tracking-widest"
+                style={{
+                  fontFamily: "'Montserrat', sans-serif",
+                  fontSize: 'clamp(0.75rem, 1vw, 1rem)',
+                  fontWeight: 400,
+                  textDecoration: 'none',
+                  padding: 'clamp(12px, 1.4vw, 16px) clamp(24px, 3vw, 40px)',
+                }}
+              >
+                Visit Site
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '8px', display: 'inline', verticalAlign: 'middle' }}>
+                  <path d="M7 17l9.2-9.2M17 17V7H7" />
+                </svg>
+              </a>
+            </BorderGlow>
+          </motion.div>
+        )}
       </div>
     </div>
   )
