@@ -17,6 +17,7 @@ export interface ProjectData {
   description: string
   role: string
   deliverables: string[]
+  url?: string
 }
 
 export const PROJECTS: ProjectData[] = [
@@ -30,6 +31,7 @@ export const PROJECTS: ProjectData[] = [
     description: '',
     role: '',
     deliverables: [],
+    url: 'https://sriranga-plum.vercel.app/',
   },
   {
     id: 'project-1',
@@ -63,6 +65,7 @@ export const PROJECTS: ProjectData[] = [
     description: '',
     role: '',
     deliverables: [],
+    url: 'https://sriranga-plum.vercel.app/',
   },
   {
     id: 'project-4',

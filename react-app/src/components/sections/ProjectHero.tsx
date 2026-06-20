@@ -45,6 +45,17 @@ export default function ProjectHero({
         >
           {project.title}
         </h2>
+        {project.url && (
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block mt-6 px-6 py-2 border border-white/30 text-white text-xs uppercase tracking-[0.15em] hover:bg-white hover:text-black transition-all duration-300"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Visit Site
+          </a>
+        )}
       </div>
     </section>
   )
