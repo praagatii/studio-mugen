@@ -85,3 +85,36 @@ export const websiteJsonLd = {
     'query-input': 'required name=search_term_string',
   },
 }
+
+export const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': `${SITE}/#localbusiness`,
+  name: 'Mugen Studios',
+  url: SITE,
+  logo: `${SITE}/og-image.png`,
+  image: `${SITE}/og-image.png`,
+  description:
+    'Website design agency in Bangalore offering web development, branding, UI/UX design, and digital experiences.',
+  email: 'developer.mugen@gmail.com',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bangalore',
+    addressRegion: 'Karnataka',
+    addressCountry: 'IN',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 12.9716,
+    longitude: 77.5946,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Bangalore' },
+    { '@type': 'City', name: 'Bengaluru' },
+  ],
+  sameAs: [
+    'https://www.instagram.com/madeby.mugen',
+  ],
+  foundingDate: '2024',
+}

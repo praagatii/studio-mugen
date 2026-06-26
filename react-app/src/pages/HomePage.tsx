@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import SEO, { organizationJsonLd, websiteJsonLd } from '../components/SEO'
+import SEO, { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from '../components/SEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import { Skiper30 } from '../components/sections/Skiper30'
@@ -369,11 +369,11 @@ export default function HomePage() {
   return (
     <div className="relative z-10">
       <SEO
-        title="Mugen Studios — Cinematic Digital Experiences"
-        description="Mugen is a creative studio crafting cinematic digital experiences, immersive branding, and visually driven products. We blend design, storytelling, and technology to create timeless, atmospheric work."
+        title="Mugen Studios — Website Design Agency in Bangalore"
+        description="Mugen Studios is a Bangalore-based website design agency specializing in web development, branding, UI/UX design, and cinematic digital experiences. We build premium websites that help businesses stand out."
         jsonLd={{
           '@context': 'https://schema.org',
-          '@graph': [organizationJsonLd, websiteJsonLd],
+          '@graph': [organizationJsonLd, websiteJsonLd, localBusinessJsonLd],
         }}
       />
 
@@ -399,7 +399,7 @@ export default function HomePage() {
         />
         <img
           src={mugenLogo}
-          alt="Mugen"
+          alt="Mugen Studios — Website Design Agency in Bangalore"
           className="block"
           style={{
             width: 'min(82vw, 980px)',
@@ -440,7 +440,7 @@ export default function HomePage() {
               className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
             >
-              Branding, web design, and creative direction for ambitious businesses. We create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
+              Branding, web design, and creative direction for ambitious businesses. As a leading website design agency in Bangalore, we create digital experiences that blend strategy, aesthetics, and technology to leave a lasting impression.
             </p>
           </div>
           <TechStack />
@@ -450,7 +450,7 @@ export default function HomePage() {
       <SectionFadeIn id="about">
         <img
           src={blackholeImg}
-          alt=""
+          alt="Mugen Studios — Web Development & Branding Agency Bangalore"
           className="absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
           style={{
             filter: 'grayscale(1) contrast(1.5) brightness(0.95) saturate(0.8)',
@@ -495,7 +495,7 @@ export default function HomePage() {
               className="text-white font-light text-left mt-3 max-w-[560px] leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.8vw, 1.3rem)' }}
             >
-              We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Every project is crafted to strengthen presence, build trust, and create lasting impact.
+              We help brands launch websites, visual identities, and digital experiences that feel premium, memorable, and intentional. Whether you need web development in Bangalore or a complete brand identity, every project is crafted to strengthen presence, build trust, and create lasting impact.
             </p>
         </div>
       </SectionFadeIn>

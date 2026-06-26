@@ -81,7 +81,7 @@ export default function Services() {
           lineHeight: '1.7',
         }}
       >
-        From interfaces to intelligent systems, we craft digital experiences where design, technology, and imagination move as one.
+        From web development and branding to UI/UX design and creative direction — we craft digital experiences where design, technology, and imagination move as one.
       </div>
 
       <div
