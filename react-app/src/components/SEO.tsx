@@ -10,6 +10,7 @@ type SEOProps = {
   ogImage?: string
   ogType?: string
   jsonLd?: Record<string, unknown>
+  preloadImages?: string[]
 }
 
 export default function SEO({
@@ -19,6 +20,7 @@ export default function SEO({
   ogImage = DEFAULT_OG,
   ogType = 'website',
   jsonLd,
+  preloadImages,
 }: SEOProps) {
   const url = `${SITE}${path}`
   const fullTitle = title.includes('Mugen') ? title : `${title} — Mugen Studios`
@@ -50,6 +52,9 @@ export default function SEO({
       {jsonLd && (
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       )}
+      {preloadImages?.map((src) => (
+        <link key={src} rel="preload" href={src} as="image" />
+      ))}
     </Helmet>
   )
 }
@@ -117,4 +122,50 @@ export const localBusinessJsonLd = {
     'https://www.instagram.com/madeby.mugen',
   ],
   foundingDate: '2024',
+}
+
+export function faqJsonLd(questions: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: questions.map((q) => ({
+      '@type': 'Question',
+      name: q.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: q.answer,
+      },
+    })),
+  }
+}
+
+export function breadcrumbJsonLd(items: { name: string; path: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.name,
+      item: `${SITE}${item.path}`,
+    })),
+  }
+}
+
+export function serviceJsonLd(services: { name: string; description: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: services.map((s, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Service',
+        name: s.name,
+        description: s.description,
+        provider: { '@id': `${SITE}/#localbusiness` },
+        areaServed: { '@type': 'City', name: 'Bangalore' },
+      },
+    })),
+  }
 }

@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import SEO, { organizationJsonLd, websiteJsonLd, localBusinessJsonLd } from '../components/SEO'
+import SEO, { organizationJsonLd, websiteJsonLd, localBusinessJsonLd, faqJsonLd, breadcrumbJsonLd, serviceJsonLd } from '../components/SEO'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Lenis from 'lenis'
 import { Skiper30 } from '../components/sections/Skiper30'
 import TechStack from '../components/sections/TechStack'
 import Services from '../components/sections/Services'
+import FAQSection from '../components/sections/FAQSection'
 import BorderGlow from '../components/BorderGlow/BorderGlow'
 import FloatingWhatsApp from '../components/ui/FloatingWhatsApp'
 import { saveLead, type Lead } from '../data/saveLead'
@@ -373,8 +374,30 @@ export default function HomePage() {
         description="Mugen Studios is a Bangalore-based website design agency specializing in web development, branding, UI/UX design, and cinematic digital experiences. We build premium websites that help businesses stand out."
         jsonLd={{
           '@context': 'https://schema.org',
-          '@graph': [organizationJsonLd, websiteJsonLd, localBusinessJsonLd],
+          '@graph': [
+            organizationJsonLd,
+            websiteJsonLd,
+            localBusinessJsonLd,
+            breadcrumbJsonLd([
+              { name: 'Home', path: '/' },
+              { name: 'Services', path: '/#services' },
+              { name: 'Contact', path: '/#contact' },
+            ]),
+            serviceJsonLd([
+              { name: 'Web Development', description: 'Custom website design and development for businesses in Bangalore.' },
+              { name: 'UI/UX Design', description: 'User interface and experience design for web and mobile applications.' },
+              { name: 'Branding', description: 'Visual identity, logo design, and brand strategy for startups and enterprises.' },
+              { name: 'Creative Direction', description: 'Art direction and creative strategy for digital campaigns and products.' },
+            ]),
+            faqJsonLd([
+              { question: 'What services does Mugen Studios offer?', answer: 'We offer web development, UI/UX design, branding and visual identity, creative direction, and digital experience design.' },
+              { question: 'How much does a website cost in Bangalore?', answer: 'Our website design projects in Bangalore start from ₹50,000 depending on complexity, features, and timeline.' },
+              { question: 'Which is the best website design agency in Bangalore?', answer: 'Mugen Studios is a leading website design agency in Bangalore, known for cinematic digital experiences, premium branding, and results-driven web development.' },
+              { question: 'How long does it take to build a website?', answer: 'A typical website takes 3–6 weeks from concept to launch. Complex projects may take 8–12 weeks.' },
+            ]),
+          ],
         }}
+        preloadImages={[mugenLogo]}
       />
 
       <motion.section
@@ -400,6 +423,7 @@ export default function HomePage() {
         <img
           src={mugenLogo}
           alt="Mugen Studios — Website Design Agency in Bangalore"
+          fetchpriority="high"
           className="block"
           style={{
             width: 'min(82vw, 980px)',
@@ -499,6 +523,8 @@ export default function HomePage() {
             </p>
         </div>
       </SectionFadeIn>
+
+      <FAQSection />
 
       <SectionFadeIn
         id="contact"
