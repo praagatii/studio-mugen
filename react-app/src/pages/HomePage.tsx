@@ -263,13 +263,11 @@ function RutamSrirangaSection() {
         </motion.div>
         <div
           className="absolute inset-0 pointer-events-none select-none"
-          style={{
-            zIndex: 3,
-            background: [
-              'radial-gradient(ellipse 75% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.5) 100%)',
-              'inset 0 0 120px rgba(0,0,0,0.4)',
-            ].join(', '),
-          }}
+            style={{
+              zIndex: 3,
+              background: 'radial-gradient(ellipse 75% 60% at 50% 50%, transparent 30%, rgba(0,0,0,0.6) 100%)',
+              boxShadow: 'inset 0 0 180px 60px rgba(0,0,0,0.5)',
+            }}
         />
         {!showSrirangaBtn && (
           <motion.div
