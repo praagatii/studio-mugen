@@ -399,7 +399,7 @@ export default function HomePage() {
             ]),
             faqJsonLd([
               { question: 'What services does Mugen Studios offer?', answer: 'We offer web development, UI/UX design, branding and visual identity, creative direction, and digital experience design.' },
-              { question: 'How much does a website cost in Bangalore?', answer: 'Our website design projects in Bangalore start from ₹50,000 depending on complexity, features, and timeline.' },
+              { question: 'How much does a website cost in Bangalore?', answer: 'Our website design projects in Bangalore start from ₹20,000 depending on complexity, features, and timeline.' },
               { question: 'Which is the best website design agency in Bangalore?', answer: 'Mugen Studios is a leading website design agency in Bangalore, known for cinematic digital experiences, premium branding, and results-driven web development.' },
               { question: 'How long does it take to build a website?', answer: 'A typical website takes 3–6 weeks from concept to launch. Complex projects may take 8–12 weeks.' },
             ]),

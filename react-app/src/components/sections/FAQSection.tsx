@@ -9,7 +9,7 @@ const faqs = [
   },
   {
     question: 'How much does a website cost in Bangalore?',
-    answer: 'Our website design and development projects in Bangalore start from ₹50,000 and go up depending on complexity, features, and timeline. We provide custom quotes after understanding your requirements.',
+    answer: 'Our website design and development projects in Bangalore start from ₹20,000 and go up depending on complexity, features, and timeline. We provide custom quotes after understanding your requirements.',
   },
   {
     question: 'Which is the best website design agency in Bangalore?',
