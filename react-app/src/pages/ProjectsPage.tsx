@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
+import SEO from '../components/SEO'
 import ProjectHero from '../components/sections/ProjectHero'
 import { PROJECTS } from '../data/projects'
 
@@ -40,13 +40,11 @@ export default function ProjectsPage() {
 
   return (
     <div className="relative z-10">
-      <Helmet>
-        <title>Projects — Mugen Studios</title>
-        <meta name="description" content="Explore Mugen Studios' portfolio of cinematic digital experiences, branding, and visual identity projects." />
-        <link rel="canonical" href="https://studio-mugen.com/projects" />
-        <meta property="og:title" content="Projects — Mugen Studios" />
-        <meta property="og:url" content="https://studio-mugen.com/projects" />
-      </Helmet>
+      <SEO
+        title="Projects"
+        description="Explore Mugen Studios' portfolio of cinematic digital experiences, branding, and visual identity projects."
+        path="/projects"
+      />
 
       {SHOW_PROJECTS.map((project) => (
         <ProjectHero key={project.id} project={project} />
